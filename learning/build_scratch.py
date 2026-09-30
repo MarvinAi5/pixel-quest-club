@@ -77,7 +77,7 @@ def project(day):
     seq+=[change]
    seq+=[B.add('looks_hide')];B.script(*seq);targets.append(target('Treasure'+str(i),B,x=x,y=y,color='#ffbf42',size=20))
  if day>=23:
-  B=Blocks();B.script(B.hat(),B.wait(B.touching('Player')),B.broadcast('Lose'));targets.append(target('Hazard',B,x=0,y=-100,color='#bc581d',size=40))
+  B=Blocks();B.script(B.hat(),B.add('control_wait',inputs={'DURATION':B.val(0.1)}),B.wait(B.touching('Player')),B.broadcast('Lose'));targets.append(target('Hazard',B,x=0,y=-100,color='#bc581d',size=40))
  return dict(targets=targets,monitors=[],extensions=[],meta={'semver':'3.0.0','vm':'5.0.0','agent':'Pixel Quest Club educational reference'}),assets
 
 def build(output=None):

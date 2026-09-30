@@ -10,7 +10,7 @@ SCRATCH={
 20:('Write or draw your player, action, goal and hazard. Keep five treasures and one stationary hazard as the small reference design. You may choose different art without changing the rules.', 'Plan:\nPlayer: your character\nAction: move with arrows\nGoal: collect 5 treasures\nChallenge: avoid 1 hazard\nReplay: green flag', 'Your plan names the controls, five-pickup goal, one challenge and replay.'),
 21:('Select Player. Add left, up and down conditions inside the same forever loop, next to right. Each is a separate if, so diagonal input is possible.', 'Player: inside forever\nif <key [right arrow] pressed?> then change x by 4\nif <key [left arrow] pressed?> then change x by -4\nif <key [up arrow] pressed?> then change y by 4\nif <key [down arrow] pressed?> then change y by -4', 'All four directions work; green flag restores the starting position.'),
 22:('Right-click a tested Treasure sprite and duplicate it four times. Move the five sprites to different positions. Each sprite needs its own show/wait-until/change-score/hide stack. Keep the one Stage score reset.', 'Each of 5 Treasure sprites:\nwhen green flag clicked\nshow\nwait 0.1 seconds\nwait until <touching [Player]?>\nchange [score] by 1\nhide', 'Five distinct pickups produce score 5; standing still cannot count one twice.'),
-23:('Create playing for all sprites. Stage sets it to 1 on green flag. Put all Player direction conditions inside if playing=1. In each Treasure, guard the score increment with playing=1. Hazard waits for contact once and broadcasts Lose. Stage receives Lose and sets playing=0.', 'Stage:\nwhen green flag clicked → set [playing] to 1\nwhen I receive [Lose] → set [playing] to 0\n\nPlayer: inside forever\nif <playing = 1> then\n  [all four direction checks]\n\nEach Treasure: after wait until touching Player\nif <playing = 1> then change [score] by 1\nhide\n\nHazard:\nwhen green flag clicked\nwait until <touching [Player]?>\nbroadcast [Lose]\n\nPlayer:\nwhen I receive [Lose]\nsay [Try another route! Green flag to replay.]', 'A hazard broadcasts Lose once. Movement and scoring stop until green flag.'),
+23:('Create playing for all sprites. Stage sets it to 1 on green flag. Put all Player direction conditions inside if playing=1. In each Treasure, guard the score increment with playing=1. Hazard waits for contact once and broadcasts Lose. Stage receives Lose and sets playing=0.', 'Stage:\nwhen green flag clicked → set [playing] to 1\nwhen I receive [Lose] → set [playing] to 0\n\nPlayer: inside forever\nif <playing = 1> then\n  [all four direction checks]\n\nEach Treasure: after wait until touching Player\nif <playing = 1> then change [score] by 1\nhide\n\nHazard:\nwhen green flag clicked\nwait 0.1 seconds\nwait until <touching [Player]?>\nbroadcast [Lose]\n\nPlayer:\nwhen I receive [Lose]\nsay [Try another route! Green flag to replay.]', 'A hazard broadcasts Lose once. Movement and scoring stop until green flag.'),
 24:('On Stage, add a separate green-flag stack that waits for score=5 then broadcasts Win. Receive Win to set playing=0. Player receives Win and says the message. Test green flag after each ending.', 'Stage:\nwhen green flag clicked\nwait until <score = 5>\nbroadcast [Win]\n\nwhen I receive [Win]\nset [playing] to 0\n\nPlayer:\nwhen I receive [Win]\nsay [You win! Green flag to replay.]\n\nExisting green-flag stacks reset score, playing, Player and every Treasure.', 'Winning stops movement; green flag restores score, start position and all five treasures after win or loss.'),
 25:('Add a short Say instruction under a separate Player green flag. Explain controls, goal, hazard and replay. Ask a player to begin without coaching.', 'Player:\nwhen green flag clicked\nsay [Arrows move. Collect 5. Avoid orange. Green flag replays.]', 'A new player can find the controls and goal. Human playtest still needed.'),
 26:('Keep a dated .sb3 backup. Choose one missing essential, not an extra feature. Replay one pickup, hazard loss, full win and green-flag replay.', 'Checklist: controls → pickup → loss → win → replay\nFile → Save to your computer', 'The chosen essential works and a working .sb3 is saved.'),
@@ -43,11 +43,36 @@ GODOT_NOTES={
 29:'Save the entire Godot source. With an adult, follow the linked Android export documentation for current SDK/JDK requirements, install export templates and export a test APK. Test that APK on the Retroid. Back up signing keys privately.',
 30:'Show your game, explain a function, signal and state, then change one rule and rebuild. Your own explanation and a physical export remain human/device checks.'}
 
+GODOT_RESULTS={
+8:'Main.tscn saves and F5 opens the empty main scene without errors.',
+9:'Your visible Player has a CollisionShape2D and appears as an instance in Main.',
+10:'Arrow/WASD actions move the Player in four directions; releasing input stops movement.',
+11:'Touching Treasure removes it once through body_entered.',
+12:'One pickup increments Main.score once and changes the Score label.',
+13:'Five separate Treasure instances can each be collected once, producing score 5.',
+14:'The copied source project opens and the pickup route still works.',
+15:'Touching Hazard changes the round to LOST and displays a losing message.',
+16:'Won and lost states stop movement and scoring until replay.',
+17:'The real Timer causes a loss on timeout and stops when the player wins.',
+18:'Replay restores score, treasures, player position and timer. An adult must test the APK on Retroid.',
+19:'Pickup sound is optional; with Mute on, score and messages still work.',
+20:'Your written plan names a player, action, goal, challenge and replay.',
+21:'The core movement-and-pickup loop works before decoration is added.',
+22:'All five pickups are reachable within the level bounds and count once.',
+23:'A player can avoid the hazard, and contact produces a clear loss. Fairness needs a human playtest.',
+24:'Win and loss both work; a second round works after either ending.',
+25:'Replay and Mute accept focus and UI input. A physical controller check is still required.',
+26:'One essential issue is fixed and a known-good source copy is saved.',
+27:'A parent and child record results on a real computer and Retroid; this is a hardware activity.',
+28:'The chosen fix is followed by successful win, loss and replay tests.',
+29:'The source is backed up and a test APK exports. Installing and playing it on Retroid is a device check.',
+30:'You demonstrate and explain a function, signal and state, change one rule, and rebuild.'}
+
 def enrich_external(l):
  d=l['day']
  if l['mode']=='scratch':
   note,recipe,result=SCRATCH[d];l.update(walkthrough=[note,'Use the recipe below with the named sprites. It describes blocks to assemble; it is not code to paste.','The optional .sb3 checkpoint is for comparing a working pattern. Build and change your own version.'],guideCode=recipe,success=result,checkpoint=f'scratch-day-{d}.sb3')
  elif l['mode']=='godot':
   file='Player.gd' if d in (9,10,21,22,23) else 'Treasure.gd' if d==11 else 'Hazard.gd' if d==15 else 'Main.gd'
-  l.update(walkthrough=[GODOT_NOTES[d],'The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.','Build in your own project. Use the reference to locate the pattern, rather than copying a finished game without understanding it.'],guideCode=main_script(d) if file=='Main.gd' else (ROOT/'godot-reference'/file).read_text(),guideMain=main_script(d),guideFile=file,success='Check the described feature, then replay the project. '+GODOT_NOTES[d])
+  l.update(walkthrough=[GODOT_NOTES[d],'The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.','Build in your own project. Use the reference to locate the pattern, rather than copying a finished game without understanding it.'],guideCode=main_script(d) if file=='Main.gd' else (ROOT/'godot-reference'/file).read_text(),guideMain=main_script(d),guideFile=file,success=GODOT_RESULTS[d])
  return l

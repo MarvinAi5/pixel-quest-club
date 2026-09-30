@@ -5799,7 +5799,7 @@
         "Use the recipe below with the named sprites. It describes blocks to assemble; it is not code to paste.",
         "The optional .sb3 checkpoint is for comparing a working pattern. Build and change your own version."
       ],
-      "guideCode": "Stage:\nwhen green flag clicked → set [playing] to 1\nwhen I receive [Lose] → set [playing] to 0\n\nPlayer: inside forever\nif <playing = 1> then\n  [all four direction checks]\n\nEach Treasure: after wait until touching Player\nif <playing = 1> then change [score] by 1\nhide\n\nHazard:\nwhen green flag clicked\nwait until <touching [Player]?>\nbroadcast [Lose]\n\nPlayer:\nwhen I receive [Lose]\nsay [Try another route! Green flag to replay.]",
+      "guideCode": "Stage:\nwhen green flag clicked → set [playing] to 1\nwhen I receive [Lose] → set [playing] to 0\n\nPlayer: inside forever\nif <playing = 1> then\n  [all four direction checks]\n\nEach Treasure: after wait until touching Player\nif <playing = 1> then change [score] by 1\nhide\n\nHazard:\nwhen green flag clicked\nwait 0.1 seconds\nwait until <touching [Player]?>\nbroadcast [Lose]\n\nPlayer:\nwhen I receive [Lose]\nsay [Try another route! Green flag to replay.]",
       "checkpoint": "scratch-day-23.sb3"
     },
     {
@@ -7120,7 +7120,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Godot 4 Standard → New Project → Compatibility. In the 2D workspace, add Node2D named Main, save Main.tscn, and use F5 to select it as main scene. F6 runs the currently open scene.",
+      "success": "Main.tscn saves and F5 opens the empty main scene without errors.",
       "walkthrough": [
         "Godot 4 Standard → New Project → Compatibility. In the 2D workspace, add Node2D named Main, save Main.tscn, and use F5 to select it as main scene. F6 runs the currently open scene.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -7176,7 +7176,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. New scene → CharacterBody2D named Player. Add Polygon2D named Art and draw a small square, plus CollisionShape2D with a CircleShape2D radius 18. Save Player.tscn; drag it into Main. Move it away from the origin so it is visible.",
+      "success": "Your visible Player has a CollisionShape2D and appears as an instance in Main.",
       "walkthrough": [
         "New scene → CharacterBody2D named Player. Add Polygon2D named Art and draw a small square, plus CollisionShape2D with a CircleShape2D radius 18. Save Player.tscn; drag it into Main. Move it away from the origin so it is visible.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -7240,7 +7240,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Select Player and attach Player.gd. Project → Project Settings → Input Map: add move_left/right/up/down. Bind arrows and WASD, plus left-stick negative/positive X/Y axes with deadzone 0.2. F5 tests Main, not just the standalone Player scene.",
+      "success": "Arrow/WASD actions move the Player in four directions; releasing input stops movement.",
       "walkthrough": [
         "Select Player and attach Player.gd. Project → Project Settings → Input Map: add move_left/right/up/down. Bind arrows and WASD, plus left-stick negative/positive X/Y axes with deadzone 0.2. F5 tests Main, not just the standalone Player scene.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -7299,7 +7299,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. New scene → Area2D named Treasure. Add visible art and CollisionShape2D (circle radius 12). Player is on collision layer 1; Treasure mask includes layer 1. Connect body_entered once: the reference uses code in _ready; do not also connect it in the Signals panel. Save Treasure.tscn, drag one instance into Main, and name that instance Treasure1.",
+      "success": "Touching Treasure removes it once through body_entered.",
       "walkthrough": [
         "New scene → Area2D named Treasure. Add visible art and CollisionShape2D (circle radius 12). Player is on collision layer 1; Treasure mask includes layer 1. Connect body_entered once: the reference uses code in _ready; do not also connect it in the Signals panel. Save Treasure.tscn, drag one instance into Main, and name that instance Treasure1.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -7358,7 +7358,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Main owns score. Add CanvasLayer → Score (Label) and Message (Label), with those exact names. Treasure declares signal collected; The Main.gd example below connects any child with a collected signal to add_score in _ready. Replace Main.gd with this day’s complete example when comparing; keep earlier source backups. The connection must exist before the first pickup.",
+      "success": "One pickup increments Main.score once and changes the Score label.",
       "walkthrough": [
         "Main owns score. Add CanvasLayer → Score (Label) and Message (Label), with those exact names. Treasure declares signal collected; The Main.gd example below connects any child with a collected signal to add_score in _ready. Replace Main.gd with this day’s complete example when comparing; keep earlier source backups. The connection must exist before the first pickup.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -7422,7 +7422,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Save Treasure.tscn. Drag five instances into Main, name them Treasure1 through Treasure5, and give them distinct reachable positions. The Main.gd example below discovers and connects all five signals. Edit the original Treasure scene to change every instance.",
+      "success": "Five separate Treasure instances can each be collected once, producing score 5.",
       "walkthrough": [
         "Save Treasure.tscn. Drag five instances into Main, name them Treasure1 through Treasure5, and give them distinct reachable positions. The Main.gd example below discovers and connects all five signals. Edit the original Treasure scene to change every instance.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -7481,7 +7481,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Save all scenes/scripts. Copy the entire project folder, including project.godot and scenes, or commit the source. Reopen the copy and replay movement and one pickup. Exported files are not source backups.",
+      "success": "The copied source project opens and the pickup route still works.",
       "walkthrough": [
         "Save all scenes/scripts. Copy the entire project folder, including project.godot and scenes, or commit the source. Reopen the copy and replay movement and one pickup. Exported files are not source backups.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -7540,7 +7540,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Create Hazard.tscn as Area2D with visible art and CollisionShape2D. Its body_entered emits hit for a CharacterBody2D. Instance it in Main; Main connects Hazard.hit to lose. Use the Main.gd file in the day-15 reference below as well as Hazard.gd. Use layer 1 in the detection mask.",
+      "success": "Touching Hazard changes the round to LOST and displays a losing message.",
       "walkthrough": [
         "Create Hazard.tscn as Area2D with visible art and CollisionShape2D. Its body_entered emits hit for a CharacterBody2D. Instance it in Main; Main connects Hazard.hit to lose. Use the Main.gd file in the day-15 reference below as well as Hazard.gd. Use layer 1 in the detection mask.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -7599,7 +7599,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Main has one enum State { PLAYING, WON, LOST }. finish changes state once, disables Player.enabled, stops RoundTimer and updates Message. add_score returns early after an ending.",
+      "success": "Won and lost states stop movement and scoring until replay.",
       "walkthrough": [
         "Main has one enum State { PLAYING, WON, LOST }. finish changes state once, disables Player.enabled, stops RoundTimer and updates Message. add_score returns early after an ending.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -7658,7 +7658,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Add Timer named RoundTimer under Main. Set One Shot on; connect timeout to lose once. Start it with 60 seconds in _ready. Both finish paths stop it. Test a short limit, then restore 60.",
+      "success": "The real Timer causes a loss on timeout and stops when the player wins.",
       "walkthrough": [
         "Add Timer named RoundTimer under Main. Set One Shot on; connect timeout to lose once. Start it with 60 seconds in _ready. Both finish paths stop it. Test a short limit, then restore 60.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -7717,7 +7717,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Add restart input action with physical R key and controller A. _process checks is_action_just_pressed and reloads the current scene. Add a Button named Restart under CanvasLayer, set its text to Replay, and use the example’s pressed connection to restart. The input event is optional; the physical Retroid APK test needs a parent.",
+      "success": "Replay restores score, treasures, player position and timer. An adult must test the APK on Retroid.",
       "walkthrough": [
         "Add restart input action with physical R key and controller A. _process checks is_action_just_pressed and reloads the current scene. Add a Button named Restart under CanvasLayer, set its text to Replay, and use the example’s pressed connection to restart. The input event is optional; the physical Retroid APK test needs a parent.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -7776,7 +7776,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Add AudioStreamPlayer named PickupSound and a short original or licensed stream. Play it on pickup. Mute CheckButton toggles muted; scoring and visible messages must still work while muted. Downloaded reference uses an original generated tone.",
+      "success": "Pickup sound is optional; with Mute on, score and messages still work.",
       "walkthrough": [
         "Add AudioStreamPlayer named PickupSound and a short original or licensed stream. Play it on pickup. Mute CheckButton toggles muted; scoring and visible messages must still work while muted. Downloaded reference uses an original generated tone.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -7835,7 +7835,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Write player, action, goal, challenge and replay. Draw five reachable pickups and one avoidable hazard. Keep a single level; choose your own theme or simple art.",
+      "success": "Your written plan names a player, action, goal, challenge and replay.",
       "walkthrough": [
         "Write player, action, goal, challenge and replay. Draw five reachable pickups and one avoidable hazard. Keep a single level; choose your own theme or simple art.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -7894,7 +7894,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Use your own project or checkpoint. Test Player movement and one Treasure body_entered signal before adding more objects. Say aloud what each script does.",
+      "success": "The core movement-and-pickup loop works before decoration is added.",
       "walkthrough": [
         "Use your own project or checkpoint. Test Player movement and one Treasure body_entered signal before adding more objects. Say aloud what each script does.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -7953,7 +7953,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Place five Treasure scene instances. Player bounds are clamped inside the 800×450 viewport; keep objects within those reachable limits. Test every pickup, including corners.",
+      "success": "All five pickups are reachable within the level bounds and count once.",
       "walkthrough": [
         "Place five Treasure scene instances. Player bounds are clamped inside the 800×450 viewport; keep objects within those reachable limits. Test every pickup, including corners.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -8012,7 +8012,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Use one hazard and leave a route around it. Adjust the Hazard CollisionShape2D radius and Player speed separately; test loss and the safe route after each change.",
+      "success": "A player can avoid the hazard, and contact produces a clear loss. Fairness needs a human playtest.",
       "walkthrough": [
         "Use one hazard and leave a route around it. Adjust the Hazard CollisionShape2D radius and Player speed separately; test loss and the safe route after each change.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -8071,7 +8071,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. finish(WON, ...) happens at target; lose calls finish(LOST, ...). Both stop scoring and movement. Use Replay after each ending and confirm all treasures, score and timer reset.",
+      "success": "Win and loss both work; a second round works after either ending.",
       "walkthrough": [
         "finish(WON, ...) happens at target; lose calls finish(LOST, ...). Both stop scoring and movement. Use Replay after each ending and confirm all treasures, score and timer reset.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -8130,7 +8130,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Set Button/CheckButton Focus Mode to All. Set focus neighbors between Replay and Mute, and grab_focus on Replay at start. Godot built-in ui_accept accepts keyboard/controller input. Test focus navigation on a real controller separately.",
+      "success": "Replay and Mute accept focus and UI input. A physical controller check is still required.",
       "walkthrough": [
         "Set Button/CheckButton Focus Mode to All. Set focus neighbors between Replay and Mute, and grab_focus on Replay at start. Godot built-in ui_accept accepts keyboard/controller input. Test focus navigation on a real controller separately.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -8189,7 +8189,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Save a working source copy. Fix one essential and remove an unfinished optional feature. Retest movement, pickup, both endings and replay.",
+      "success": "One essential issue is fixed and a known-good source copy is saved.",
       "walkthrough": [
         "Save a working source copy. Fix one essential and remove an unfinished optional feature. Retest movement, pickup, both endings and replay.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -8248,7 +8248,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Run on computer and on your Retroid with a parent. Record controller bindings, text size, sound and performance. Automated desktop tests cannot complete this hardware activity.",
+      "success": "A parent and child record results on a real computer and Retroid; this is a hardware activity.",
       "walkthrough": [
         "Run on computer and on your Retroid with a parent. Record controller bindings, text size, sound and performance. Automated desktop tests cannot complete this hardware activity.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -8307,7 +8307,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Fix the most serious reproduced issue first. Replay win/loss/restart and try starting without help. Keep a known-good source copy.",
+      "success": "The chosen fix is followed by successful win, loss and replay tests.",
       "walkthrough": [
         "Fix the most serious reproduced issue first. Replay win/loss/restart and try starting without help. Keep a known-good source copy.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -8366,7 +8366,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Save the entire Godot source. With an adult, follow the linked Android export documentation for current SDK/JDK requirements, install export templates and export a test APK. Test that APK on the Retroid. Back up signing keys privately.",
+      "success": "The source is backed up and a test APK exports. Installing and playing it on Retroid is a device check.",
       "walkthrough": [
         "Save the entire Godot source. With an adult, follow the linked Android export documentation for current SDK/JDK requirements, install export templates and export a test APK. Test that APK on the Retroid. Back up signing keys privately.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
@@ -8425,7 +8425,7 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Show your game, explain a function, signal and state, then change one rule and rebuild. Your own explanation and a physical export remain human/device checks.",
+      "success": "You demonstrate and explain a function, signal and state, change one rule, and rebuild.",
       "walkthrough": [
         "Show your game, explain a function, signal and state, then change one rule and rebuild. Your own explanation and a physical export remain human/device checks.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
