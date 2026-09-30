@@ -42,6 +42,11 @@ offset_right = 144.0
 offset_bottom = 442.0
 text = "Replay"
 [node name="Mute" type="CheckButton" parent="CanvasLayer"]
+theme_override_colors/font_color = Color(0.1,0.13,0.23,1)
+theme_override_colors/font_hover_color = Color(0.1,0.13,0.23,1)
+theme_override_colors/font_pressed_color = Color(0.1,0.13,0.23,1)
+theme_override_colors/font_hover_pressed_color = Color(0.1,0.13,0.23,1)
+theme_override_colors/font_focus_color = Color(0.1,0.13,0.23,1)
 offset_left = 170.0
 offset_top = 400.0
 offset_right = 290.0
