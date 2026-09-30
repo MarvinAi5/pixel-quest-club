@@ -27,3 +27,8 @@ backups/
 
 node_modules/
 qa-artifacts/
+
+# Rebuilt from the editable lesson recipes
+/public/scratch-day-*.sb3
+/godot-reference/.godot/
+/godot-reference/CourseTest.gd

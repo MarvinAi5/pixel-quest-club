@@ -1,6 +1,11 @@
 """Validate source, then produce versioned static files for Caddy."""
 from pathlib import Path
 import hashlib,json,shutil,subprocess,os,re
+from learning.build_godot import build as build_godot
+from learning.build_scratch import build as build_scratch
+build_godot()
+build_scratch()
+subprocess.run([os.environ.get("PQC_PYTHON", "python3"), str(Path(__file__).resolve().parent/"make_curriculum.py")], check=True)
 root=Path(__file__).resolve().parent; public=root/'public';dist=root/'dist'
 data=json.loads((public/'curriculum.json').read_text())
 assert set(data['paths'])=={'story','game','dev'}
@@ -19,7 +24,7 @@ def emit(name,content):
  target=str(p.with_name(p.stem+'-'+digest+p.suffix));dest=dist/target
  dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(content);mapping[name]=target
 for p in (public/'assets').glob('*.webp'):emit('assets/'+p.name,p.read_bytes())
-for name in ['curriculum.json','starter-godot.zip','favicon.svg']:emit(name,(public/name).read_bytes())
+for name in ['curriculum.json','starter-godot.zip','favicon.svg']+[p.name for p in public.glob('scratch-day-*.sb3')]:emit(name,(public/name).read_bytes())
 for name in ['style.css','engine.js','app.js']:
  text=(public/name).read_text()
  for before,after in mapping.items():text=re.sub(re.escape(before)+r'(?![A-Za-z0-9_])',lambda _match:after,text)

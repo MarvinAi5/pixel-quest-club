@@ -1,4 +1,6 @@
-Optional Godot 4 reference project
-Open project.godot with Godot 4 Standard. Run the main scene. Move with arrows/WASD or a controller left stick; restart with R/controller A.
-This compact reference uses simple shapes and a single script so you can inspect the rules. It differs from the scene-based project you build in the lessons. Use it as a comparison, not a replacement for your own work.
-This project was checked structurally; this execution environment has no Godot editor, so it still needs an editor/device playtest before calling it a verified handheld build.
+Godot 4 scene-based reference for October Game Developers.
+Open project.godot using Godot 4 Standard, Compatibility. F5 runs Main.
+Player is CharacterBody2D, pickups and Hazard are Area2D scenes. Main owns score/state.
+Select Main and change Course Day (8–30) in Inspector to compare the rules introduced on each day. This reference demonstrates the technical patterns; design your own layout and art. Follow the website for today's lesson.
+Arrows/WASD or left stick move. R/controller A/Replay restarts. Mute toggles pickup sound.
+Automated engine tests cover movement, physics signals, score, endings, timer, replay, focus and muted feedback. Physical controller, Android export and real Retroid play still need an adult's device check.
