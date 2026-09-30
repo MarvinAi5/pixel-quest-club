@@ -49,4 +49,6 @@ def run():
    print(json.dumps(result,indent=2))
    return result
   finally:proc.terminate();proc.wait(timeout=10)
-if __name__=='__main__':run()
+if __name__=='__main__':
+ result=run()
+ if any(p['failures'] for p in result['phases']) or result['successful_saves']!=100 or result['database_integrity']!='ok':raise SystemExit(1)

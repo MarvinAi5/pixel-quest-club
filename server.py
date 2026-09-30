@@ -6,7 +6,7 @@ from pathlib import Path
 from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 from http.cookies import SimpleCookie
 ROOT=Path(__file__).resolve().parent
-PUBLIC=ROOT/'public'
+PUBLIC=Path(os.environ.get('PQC_PUBLIC_DIR',str(ROOT/'public')))
 DATA=Path(os.environ.get('PQC_DATA_DIR',str(ROOT/'data')))
 SECURE=os.environ.get('PQC_SECURE_COOKIES','0')=='1'
 SIGNUP=os.environ.get('PQC_OPEN_CHILD_SIGNUP','0')=='1'
