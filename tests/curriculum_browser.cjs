@@ -73,7 +73,7 @@ async function dev(d){
  for(const pathName of ['story','game','dev']){
   await click('path',pathName);
   for(const l of DATA.lessons.filter(l=>l.path===pathName)){
-   await click('day',l.day);const item={id:l.id,title:l.title,mode:l.mode,checks:[]};report.lessons.push(item);
+   await click('day',l.day);if(pathName==='story'&&l.day===1){assert.equal(await page.locator('.block').count(),0);await click('add-block','right');await page.locator('.block [data-block-field="value"]').fill('1');await run();await moveResult(170,345);}const item={id:l.id,title:l.title,mode:l.mode,checks:[]};report.lessons.push(item);
    await page.locator('summary').filter({hasText:'Need a hint?'}).click();await page.locator('summary').filter({hasText:'Extra challenge'}).click();await page.locator('summary').filter({hasText:'Walk through this activity'}).click();assert(l.success&&l.walkthrough.length);item.checks.push('Hint, challenge, walkthrough and expected result visible');
    for(const theme of ['royal','space','halloween']){await click('theme',theme);await page.waitForFunction(()=>Array.from(document.images).every(i=>i.complete&&i.naturalWidth>0));}
    if(l.mode==='browser'){

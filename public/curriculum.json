@@ -59,6 +59,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Choose Scene 1 and Picture blocks. Start with an empty program; use Clear commands if needed.",
       "starterCode": "move right 1",
       "practice": {
         "schema": 1,
@@ -170,6 +171,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Keep one Move right block from Quest 1. If you start here, add Move right 1 first.",
       "starterCode": "move right 2",
       "practice": {
         "schema": 1,
@@ -286,6 +288,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "For this practice, choose Scene 1, Run is pressed, and Clear commands before adding the two actions.",
       "starterCode": "move right 2\nsay \"Hello\"",
       "practice": {
         "schema": 1,
@@ -407,6 +410,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Choose Scene 1, Run is pressed, and Clear commands before building the up/down sequence.",
       "starterCode": "move up 1\nmove down 2",
       "practice": {
         "schema": 1,
@@ -528,6 +532,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Clear the practice commands first, then build the two actions in today’s steps.",
       "starterCode": "say \"Ready\"\nmove right 2",
       "practice": {
         "schema": 1,
@@ -654,6 +659,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Clear the practice commands first, then build Hello, Wait and Goodbye.",
       "starterCode": "say \"Hello\"\nwait 1\nsay \"Goodbye\"",
       "practice": {
         "schema": 1,
@@ -785,6 +791,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Use Clear commands for this independent practice; keep your stage layout.",
       "starterCode": "move right 1\nsay \"My story\"\nwait 1",
       "practice": {
         "schema": 1,
@@ -908,6 +915,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Clear the practice commands first. Add a Repeat move block, set right, amount 1 and count 3.",
       "starterCode": "repeat 3 right 1",
       "practice": {
         "schema": 1,
@@ -1023,6 +1031,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Clear the practice commands first. Add Repeat move with up, amount 1 and count 2.",
       "starterCode": "repeat 2 up 1",
       "practice": {
         "schema": 1,
@@ -1136,6 +1145,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Use a single Say block for this practice. Keep Scene 1 and Run is pressed.",
       "starterCode": "say \"Welcome to my adventure!\"",
       "practice": {
         "schema": 1,
@@ -1252,6 +1262,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Clear the practice commands, then add the two greeting blocks and choose each companion.",
       "starterCode": "say \"Hello\"\nsay \"Hello back!\"",
       "practice": {
         "schema": 1,
@@ -1368,6 +1379,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Keep a greeting program. Select Character is tapped, press Run, then tap Companion 1.",
       "starterCode": "say \"You tapped me!\"",
       "practice": {
         "schema": 1,
@@ -1484,6 +1496,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Clear the practice commands, add a greeting, then Play sound. Keep Run is pressed.",
       "starterCode": "say \"Hello\"\nsound",
       "practice": {
         "schema": 1,
@@ -1610,6 +1623,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Clear the practice commands, then deliberately build the mixed-up greeting sequence.",
       "starterCode": "say \"Goodbye\"\nwait 1\nsay \"Hello\"",
       "practice": {
         "schema": 1,
@@ -1731,6 +1745,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Keep Scene 1. Select Scene 2 above the editor and give it a new greeting; themes apply to both scenes.",
       "starterCode": "say \"Welcome to Scene 1\"",
       "practice": {
         "schema": 1,
@@ -1847,6 +1862,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Give Scene 2 an ending with Run is pressed. Return to Scene 1 and clear its practice commands.",
       "starterCode": "say \"Welcome\"\nnext",
       "practice": {
         "schema": 1,
@@ -1968,6 +1984,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Give Scene 2 a Say reply and Message arrives trigger. Return to Scene 1, choose Run is pressed and clear its practice commands.",
       "starterCode": "say \"Are you there?\"\nmessage",
       "practice": {
         "schema": 1,
@@ -2094,6 +2111,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Choose Scene 1 and Run is pressed. Clear its practice commands before the hide/wait/show sequence.",
       "starterCode": "hide\nwait 1\nshow",
       "practice": {
         "schema": 1,
@@ -2215,6 +2233,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Choose Scene 1 and Run is pressed. Clear the practice commands and write a new welcome.",
       "starterCode": "say \"Press Run to begin!\"",
       "practice": {
         "schema": 1,
@@ -2336,6 +2355,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Continue your own story project. Save a backup before a large change; do not replace it with a practice stage.",
       "starterCode": "say \"I am looking for my friend\"\nmove right 1\nwait 1",
       "practice": {
         "schema": 1,
@@ -2462,6 +2482,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Continue your own story project. Save a backup before a large change; do not replace it with a practice stage.",
       "starterCode": "say \"Hello, friend!\"\nmove right 1",
       "practice": {
         "schema": 1,
@@ -2590,6 +2611,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Continue your own story project. Save a backup before a large change; do not replace it with a practice stage.",
       "starterCode": "repeat 2 right 1\nwait 1\nsay \"I found you!\"",
       "practice": {
         "schema": 1,
@@ -2718,6 +2740,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Continue your own story project. Save a backup before a large change; do not replace it with a practice stage.",
       "starterCode": "say \"We made it!\"\nnext",
       "practice": {
         "schema": 1,
@@ -2849,6 +2872,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Continue your own story project. Save a backup before a large change; do not replace it with a practice stage.",
       "starterCode": "hide\nwait 1\nshow\nsay \"Surprise!\"",
       "practice": {
         "schema": 1,
@@ -2985,6 +3009,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Continue your own story project. Save a backup before a large change; do not replace it with a practice stage.",
       "starterCode": "say \"A short line\"\nwait 1\nsay \"The end\"",
       "practice": {
         "schema": 1,
@@ -3111,6 +3136,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Continue your own story project. Save a backup before a large change; do not replace it with a practice stage.",
       "starterCode": "say \"My favorite story\"\nmove right 1",
       "practice": {
         "schema": 1,
@@ -3232,6 +3258,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Continue your own story project. Save a backup before a large change; do not replace it with a practice stage.",
       "starterCode": "say \"Press Run; watch my adventure\"\nmove right 1",
       "practice": {
         "schema": 1,
@@ -3358,6 +3385,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Continue your own story project. Save a backup before a large change; do not replace it with a practice stage.",
       "starterCode": "say \"A clearer beginning\"\nwait 1\nsay \"The end\"",
       "practice": {
         "schema": 1,
@@ -3484,6 +3512,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Continue your own story project. Save a backup before a large change; do not replace it with a practice stage.",
       "starterCode": "say \"My saved story\"\nnext",
       "practice": {
         "schema": 1,
@@ -3612,6 +3641,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Continue your own story project. Save a backup before a large change; do not replace it with a practice stage.",
       "starterCode": "repeat 2 right 1\nsay \"Our adventure\"\nnext",
       "practice": {
         "schema": 1,
@@ -3743,6 +3773,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Choose Scene 1 and Picture blocks; clear practice commands before adding movement.",
       "starterCode": "move right 2",
       "practice": {
         "schema": 1,
@@ -3867,6 +3898,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Choose Scene 1 and Run is pressed. Clear commands before the right/up sequence.",
       "starterCode": "move right 2\nmove up 1",
       "practice": {
         "schema": 1,
@@ -3991,6 +4023,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Keep a short movement or greeting program; compare Run is pressed with Character is tapped.",
       "starterCode": "say \"Started!\"",
       "practice": {
         "schema": 1,
@@ -4077,7 +4110,7 @@
       "steps": [
         "Set the target to 3",
         "Use exactly three treasures on the stage",
-        "Run and check the score display"
+        "Add Move right 6, choose Run is pressed, then Run and check score"
       ],
       "recall": "What does score remember?",
       "hint": "Tap the stage in Layout mode to place treasures.",
@@ -4110,6 +4143,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Choose Scene 1 and Run is pressed. Clear commands and use exactly three treasures on the ground.",
       "starterCode": "move right 6",
       "practice": {
         "schema": 1,
@@ -4229,6 +4263,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Clear commands. Erase extra treasures so you can test one treasure at a time; use Run is pressed.",
       "starterCode": "move right 2",
       "practice": {
         "schema": 1,
@@ -4345,6 +4380,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Use the walkthrough’s one-treasure setup and target 1. Movement must come before the score condition.",
       "starterCode": "move right 2\nifwin \"You win\"",
       "practice": {
         "schema": 1,
@@ -4466,6 +4502,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Download a backup if needed; make your own three-treasure layout with a reachable route.",
       "starterCode": "move right 6\nifwin \"You win\"",
       "practice": {
         "schema": 1,
@@ -4592,6 +4629,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Clear practice commands before comparing three moves with one repeat.",
       "starterCode": "repeat 3 right 1",
       "practice": {
         "schema": 1,
@@ -4713,6 +4751,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Use one long Move right block, amount 6, so speed comparisons have the same distance.",
       "starterCode": "move right 6",
       "practice": {
         "schema": 1,
@@ -4826,6 +4865,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Choose Direction controls. You can clear the program; Run enables the direction buttons.",
       "starterCode": "",
       "practice": {
         "schema": 1,
@@ -4933,6 +4973,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Keep Direction controls; place one hazard, switch Arrange the stage back to Play mode, then Run.",
       "starterCode": "",
       "practice": {
         "schema": 1,
@@ -5045,6 +5086,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Use Direction controls and a reachable treasure target. Reset and Run start another round.",
       "starterCode": "",
       "practice": {
         "schema": 1,
@@ -5158,6 +5200,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Keep your layout. Add Say instructions under Direction controls so they appear when Run is pressed.",
       "starterCode": "say \"Collect three treasures. Use the direction buttons.\"",
       "practice": {
         "schema": 1,
@@ -5276,6 +5319,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Keep your game layout and test it in Direction controls. Write down any confusing rule.",
       "starterCode": "",
       "practice": {
         "schema": 1,
@@ -6202,6 +6246,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Open Type commands and type move right 2 on an empty line.",
       "starterCode": "move right 2",
       "practice": {
         "schema": 1,
@@ -6329,6 +6374,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "First type speed 3 and move right 4 on separate lines. Then change only 3 to 6.",
       "starterCode": "speed 3\nmove right 4",
       "practice": {
         "schema": 1,
@@ -6462,6 +6508,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Clear the typed practice code. Write a move and a say line; the GDScript comparison below is separate.",
       "starterCode": "move right 1\nsay \"Hello\"",
       "practice": {
         "schema": 1,
@@ -6600,6 +6647,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Use one treasure on the ground, target 1, then move right 2 followed by ifwin \"You win\". Compare a route that misses it.",
       "starterCode": "move right 2\nifwin \"You win\"",
       "practice": {
         "schema": 1,
@@ -6726,6 +6774,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Clear the typed practice code before comparing the repeat with three separate moves.",
       "starterCode": "repeat 3 right 1",
       "practice": {
         "schema": 1,
@@ -6856,6 +6905,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "First type move right 2. Misspell move, run it, then correct it.",
       "starterCode": "move right 2",
       "practice": {
         "schema": 1,
@@ -6990,6 +7040,7 @@
         "Follow the three quest steps above. Try the example only if you need a hint; change one thing and compare.",
         "The example button changes commands only. Load practice stage also restores the example layout and triggers; download your creation before replacing it."
       ],
+      "before": "Use exactly three reachable treasures and target 3. Plan your own route; the practice setup is available if you start here.",
       "starterCode": "repeat 3 right 2\nifwin \"You win\"",
       "practice": {
         "schema": 1,
