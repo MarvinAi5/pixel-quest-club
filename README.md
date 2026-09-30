@@ -25,4 +25,4 @@ Hosted saves have a 200 KB payload cap per account, with a default 250-account c
 
 `node tests/test_views.cjs`
 
-See QA.md. Physical Fire/Amazon Kids, live Cloudflare browser rendering, native Godot and Retroid export remain to be verified. The optional Godot reference is structurally checked only. Code, deploy scripts and public assets can go in GitHub; private environment files, database, logs and recovery keys must not.
+See QA.md. For automated browser QA, install the development dependencies with `npm install`, install Chromium with `npx playwright install chromium`, then run `npm run qa:browser`. The GitHub Actions workflow performs this on disposable local data and saves screenshots. Run `python3 tests/load_test.py` for the bounded 100-session local load test. Physical Fire/Amazon Kids, live Cloudflare browser rendering, native Godot and Retroid export remain to be verified. The optional Godot reference is structurally checked only. Code, deploy scripts and public assets can go in GitHub; private environment files, database, logs and recovery keys must not.

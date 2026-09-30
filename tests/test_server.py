@@ -44,6 +44,16 @@ class ClubTests(unittest.TestCase):
   self.assertEqual(child.call('login',{'username':kid['username'],'secret':'222222'})[0],200)
   self.assertEqual(parent.call('delete-child',{'id':kid['id']})[0],200)
   self.assertEqual(child.call('save')[0],401)
+ def test_malformed_saves_are_rejected_without_destroying_progress(self):
+  parent=Client();child=Client()
+  self.assertEqual(parent.call('register',{'role':'parent','username':'guard-parent','secret':'test-password-guard','invite':'test-family'})[0],201)
+  status,k=parent.call('children',{'secret':'123456'});self.assertEqual(status,201)
+  self.assertEqual(child.call('login',{'username':k['child']['username'],'secret':'123456'})[0],200)
+  valid={'schema':1,'completed':{'story-1':True},'projects':{}}
+  self.assertEqual(child.call('save',{'payload':valid,'revision':0})[0],200)
+  for bad in [{'schema':1,'completed':[]},{'schema':1,'projects':[]},{'schema':1,'completed':{'story-999':True}},{'schema':1,'notes':{'story-1':'x'*401}},{'schema':1,'checks':{'story-1':['wrong']}},{'schema':1,'projects':{'__proto__':{'schema':1}}}]:
+   self.assertEqual(child.call('save',{'payload':bad,'revision':1})[0],400)
+  status,saved=child.call('save');self.assertEqual(saved['revision'],1);self.assertEqual(saved['payload'],valid)
  def test_authentication_attempt_limit(self):
   client=Client()
   for _ in range(10):self.assertEqual(client.call('login',{'username':'wrong-person','secret':'000000'})[0],401)

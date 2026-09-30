@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Pixel Quest Club: dependency-free VPS server. Python 3.11+."""
 import os,json,sqlite3,secrets,hashlib,hmac,time,re,threading,urllib.parse,argparse
+from contextlib import contextmanager
 from pathlib import Path
 from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 from http.cookies import SimpleCookie
@@ -13,8 +14,13 @@ PARENT_SIGNUP=os.environ.get('PQC_PARENT_SIGNUP','1')=='1'
 INVITE=os.environ.get('PQC_PARENT_INVITE','')
 MAX_ACCOUNTS=int(os.environ.get('PQC_MAX_ACCOUNTS','250'))
 LOCK=threading.Lock(); ATTEMPTS={}
+@contextmanager
 def db():
- c=sqlite3.connect(DATA/'club.sqlite',timeout=15);c.row_factory=sqlite3.Row;c.execute('PRAGMA foreign_keys=ON');return c
+ c=sqlite3.connect(DATA/'club.sqlite',timeout=15)
+ c.row_factory=sqlite3.Row;c.execute('PRAGMA foreign_keys=ON')
+ try:
+  with c:yield c
+ finally:c.close()
 def init():
  DATA.mkdir(parents=True,exist_ok=True)
  with db() as c:
@@ -45,11 +51,35 @@ def create_user(role,secret,parent=None,username=None,avatar=0,path='story',them
  if role=='child' and not re.fullmatch(r'\d{6}',secret):raise ValueError('Choose a six-digit code.')
  if role=='parent' and not 10<=len(secret)<=128:raise ValueError('Use a password of 10–128 characters.')
  if path not in ['story','game','dev'] or theme not in ['royal','space','halloween'] or not 0<=avatar<30:raise ValueError('Choose a valid path, theme and avatar.')
+ secret_hash=digest(secret);recovery_hash=digest(recovery)
  with db() as c:
+  c.execute('BEGIN IMMEDIATE')
   if c.execute('SELECT count(*) FROM users').fetchone()[0]>=MAX_ACCOUNTS:raise ValueError('The club is full for now. Guest lessons are still available.')
-  c.execute('INSERT INTO users VALUES(?,?,?,?,?,?,?,?,?,?,?)',(uid,username,role,parent,digest(secret),digest(recovery),avatar,path,theme,now,now))
+  c.execute('INSERT INTO users VALUES(?,?,?,?,?,?,?,?,?,?,?)',(uid,username,role,parent,secret_hash,recovery_hash,avatar,path,theme,now,now))
   u=c.execute('SELECT * FROM users WHERE id=?',(uid,)).fetchone()
  return u,recovery
+def validate_save(payload):
+ if payload.get('schema')!=1:raise ValueError('Invalid draft version.')
+ for field in ['completed','checks','notes','lastDays','projects']:
+  value=payload.get(field,{})
+  if not isinstance(value,dict):raise ValueError('Invalid '+field+'.')
+  if len(value)>(3 if field in ['lastDays','projects'] else 90):raise ValueError('Too many saved entries.')
+ for field in ['completed','checks','notes']:
+  for key,value in payload.get(field,{}).items():
+   if not re.fullmatch(r'(story|game|dev)-(?:[1-9]|[12][0-9]|30)',key):raise ValueError('Invalid quest identifier.')
+   if field=='completed' and not isinstance(value,bool):raise ValueError('Invalid completion.')
+   if field=='notes' and (not isinstance(value,str) or len(value)>400):raise ValueError('Keep notes below 400 characters.')
+   if field=='checks' and (not isinstance(value,list) or len(value)>4 or any(x is not None and not isinstance(x,bool) for x in value)):raise ValueError('Invalid quest checks.')
+ for key,value in payload.get('lastDays',{}).items():
+  if key not in ['story','game','dev'] or not isinstance(value,int) or not 1<=value<=30:raise ValueError('Invalid last quest.')
+ for key,value in payload.get('projects',{}).items():
+  if key not in ['story','game','dev'] or not isinstance(value,dict) or value.get('schema')!=1:raise ValueError('Invalid browser project.')
+ if payload.get('path') not in [None,'story','game','dev'] or payload.get('theme','royal') not in ['royal','space','halloween']:raise ValueError('Invalid path or theme.')
+ if not isinstance(payload.get('avatar',0),int) or not 0<=payload.get('avatar',0)<30:raise ValueError('Invalid avatar.')
+
+class ClubServer(ThreadingHTTPServer):
+ request_queue_size=256
+
 class Handler(SimpleHTTPRequestHandler):
  server_version='PixelQuestClub'
  def __init__(self,*args,**kwargs):super().__init__(*args,directory=str(PUBLIC),**kwargs)
@@ -140,6 +170,7 @@ class Handler(SimpleHTTPRequestHandler):
    if path=='/api/save':
     payload=b.get('payload');revision=b.get('revision',0)
     if not isinstance(payload,dict) or not isinstance(revision,int):raise ValueError('Invalid draft.')
+    validate_save(payload)
     raw=json.dumps(payload)
     if len(raw.encode())>200000:raise ValueError('Keep drafts below 200 KB; download a project backup.')
     with db() as c:
@@ -174,4 +205,4 @@ class Handler(SimpleHTTPRequestHandler):
 if __name__=='__main__':
  parser=argparse.ArgumentParser();parser.add_argument('--port',type=int,default=int(os.environ.get('PORT','8080')));parser.add_argument('--host',default=os.environ.get('HOST','127.0.0.1'));args=parser.parse_args();init()
  print(f'Pixel Quest Club serving on {args.host}:{args.port}',flush=True)
- ThreadingHTTPServer((args.host,args.port),Handler).serve_forever()
+ ClubServer((args.host,args.port),Handler).serve_forever()

@@ -24,3 +24,6 @@ backups/
 
 # Separately supplied download; not needed by the hosted site
 /Pixel-Quest-Club-October.html
+
+node_modules/
+qa-artifacts/

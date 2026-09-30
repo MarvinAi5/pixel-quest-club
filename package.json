@@ -1,0 +1,1 @@
+{"name":"pixel-quest-club","private":true,"version":"0.1.0","scripts":{"qa:browser":"node tests/browser_qa.cjs"},"devDependencies":{"playwright":"1.62.1"}}

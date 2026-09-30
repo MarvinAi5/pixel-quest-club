@@ -1,0 +1,40 @@
+name: Prelaunch website QA
+on:
+  push:
+    branches: [main]
+    paths: ['public/**', 'server.py', 'build.py', 'tests/**', 'package.json', '.github/workflows/prelaunch-qa.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-and-load:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm install --ignore-scripts --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Build and regression tests
+        run: |
+          python3 build.py
+          python3 -m unittest discover -s tests -p 'test_*.py'
+          node tests/test_engine.cjs
+          node tests/test_engine_edges.cjs
+          node tests/test_app.cjs
+          node tests/test_views.cjs
+      - name: Browser controls and responsive screenshots
+        run: npm run qa:browser
+      - name: Local 100-user load test
+        run: python3 tests/load_test.py > qa-artifacts/load-results.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: prelaunch-qa-evidence
+          path: qa-artifacts/
+          retention-days: 14
