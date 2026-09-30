@@ -109,6 +109,48 @@ func run_course() -> void:
         item["status"] = "technical-pattern-passed"
         checks.append(item)
         print("PASS Godot dev-%s" % d)
+    # Execute the actual staged Main.gd examples printed on every Godot lesson page.
+    var curriculum = JSON.parse_string(FileAccess.get_file_as_string(ProjectSettings.globalize_path("res://").path_join("../public/curriculum.json")))
+    for lesson in curriculum.lessons:
+        if lesson.mode != "godot":
+            continue
+        day = lesson.day
+        var script := GDScript.new()
+        script.source_code = lesson.guideMain
+        verify(script.reload() == OK, "printed Main.gd example compiles")
+        var game = load("res://Main.tscn").instantiate()
+        game.set_script(script)
+        for i in range(1, 6):
+            if day < 11 or (day < 13 and i > 1):
+                var unused = game.get_node("Treasure%s" % i)
+                game.remove_child(unused)
+                unused.free()
+        if day < 15:
+            var unused = game.get_node("Hazard")
+            game.remove_child(unused)
+            unused.free()
+        root.add_child(game)
+        current_scene = game
+        await frames()
+        if day >= 12:
+            var treasure = game.get_node("Treasure1")
+            game.get_node("Player").position = treasure.position
+            await frames(6)
+            verify(game.score == 1, "printed guide signal wiring scores pickup")
+        if day >= 15:
+            game.get_node("Player").position = game.get_node("Hazard").position
+            await frames(6)
+            verify(game.state == game.State.LOST, "printed guide handles loss")
+        if day >= 18:
+            game.get_node("CanvasLayer/Restart").pressed.emit()
+            await frames(8)
+            game = current_scene
+            verify(game.score == 0, "printed guide reloads project")
+        game.queue_free()
+        await frames()
+        for item in checks:
+            if item.id == lesson.id:
+                item.checks.append("Actual printed staged Main.gd compiles, runs, scores, loses and replays as applicable")
     var output := {"status": "passed" if failures.is_empty() else "failed", "engine": Engine.get_version_info(), "lessons": checks, "failures": failures, "limits": "Headless desktop engine tests; no actual Retroid, controller or human playtest."}
     var file = FileAccess.open(ProjectSettings.globalize_path("res://").path_join("../qa-artifacts/godot-results.json"), FileAccess.WRITE)
     file.store_string(JSON.stringify(output, "  "))

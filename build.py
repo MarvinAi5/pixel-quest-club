@@ -24,7 +24,10 @@ def emit(name,content):
  target=str(p.with_name(p.stem+'-'+digest+p.suffix));dest=dist/target
  dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(content);mapping[name]=target
 for p in (public/'assets').glob('*.webp'):emit('assets/'+p.name,p.read_bytes())
-for name in ['curriculum.json','starter-godot.zip','favicon.svg']+[p.name for p in public.glob('scratch-day-*.sb3')]:emit(name,(public/name).read_bytes())
+for name in ['starter-godot.zip','favicon.svg']+[p.name for p in public.glob('scratch-day-*.sb3')]:emit(name,(public/name).read_bytes())
+for lesson in data['lessons']:
+ if lesson.get('checkpoint'):lesson['checkpoint']=mapping[lesson['checkpoint']]
+emit('curriculum.json',json.dumps(data,ensure_ascii=False).encode())
 for name in ['style.css','engine.js','app.js']:
  text=(public/name).read_text()
  for before,after in mapping.items():text=re.sub(re.escape(before)+r'(?![A-Za-z0-9_])',lambda _match:after,text)

@@ -1,4 +1,5 @@
 from pathlib import Path
+from learning.godot_guides import main_script
 ROOT=Path(__file__).resolve().parents[1]
 SCRATCH={
 15:('Open Scratch Create. Find the Stage on the right, sprite list below it, and Code workspace. Rename a sprite Player. File → Save to your computer downloads an editable .sb3.', 'Player: choose any costume\nFile → Save to your computer\nFile → Load from your computer', 'The .sb3 reopens and you can identify the stage, sprite list and Code tab.'),
@@ -21,11 +22,11 @@ GODOT_NOTES={
 8:'Godot 4 Standard → New Project → Compatibility. In the 2D workspace, add Node2D named Main, save Main.tscn, and use F5 to select it as main scene. F6 runs the currently open scene.',
 9:'New scene → CharacterBody2D named Player. Add Polygon2D named Art and draw a small square, plus CollisionShape2D with a CircleShape2D radius 18. Save Player.tscn; drag it into Main. Move it away from the origin so it is visible.',
 10:'Select Player and attach Player.gd. Project → Project Settings → Input Map: add move_left/right/up/down. Bind arrows and WASD, plus left-stick negative/positive X/Y axes with deadzone 0.2. F5 tests Main, not just the standalone Player scene.',
-11:'New scene → Area2D named Treasure. Add visible art and CollisionShape2D (circle radius 12). Player is on collision layer 1; Treasure mask includes layer 1. Connect body_entered once: the reference uses code in _ready; do not also connect it in the Signals panel.',
-12:'Main owns score. Add CanvasLayer → Score (Label) and Message (Label), with those exact names. Treasure declares signal collected; Main connects each treasure.collected to add_score in _ready. The connection must exist before the first pickup.',
-13:'Save Treasure.tscn. Drag five instances into Main, name them Treasure1 through Treasure5, and give them distinct reachable positions. Main connects all five signals. Edit the original Treasure scene to change every instance.',
+11:'New scene → Area2D named Treasure. Add visible art and CollisionShape2D (circle radius 12). Player is on collision layer 1; Treasure mask includes layer 1. Connect body_entered once: the reference uses code in _ready; do not also connect it in the Signals panel. Save Treasure.tscn, drag one instance into Main, and name that instance Treasure1.',
+12:'Main owns score. Add CanvasLayer → Score (Label) and Message (Label), with those exact names. Treasure declares signal collected; The Main.gd example below connects any child with a collected signal to add_score in _ready. Replace Main.gd with this day’s complete example when comparing; keep earlier source backups. The connection must exist before the first pickup.',
+13:'Save Treasure.tscn. Drag five instances into Main, name them Treasure1 through Treasure5, and give them distinct reachable positions. The Main.gd example below discovers and connects all five signals. Edit the original Treasure scene to change every instance.',
 14:'Save all scenes/scripts. Copy the entire project folder, including project.godot and scenes, or commit the source. Reopen the copy and replay movement and one pickup. Exported files are not source backups.',
-15:'Create Hazard.tscn as Area2D with visible art and CollisionShape2D. Its body_entered emits hit for a CharacterBody2D. Instance it in Main; Main connects Hazard.hit to lose. Use layer 1 in the detection mask.',
+15:'Create Hazard.tscn as Area2D with visible art and CollisionShape2D. Its body_entered emits hit for a CharacterBody2D. Instance it in Main; Main connects Hazard.hit to lose. Use the Main.gd file in the day-15 reference below as well as Hazard.gd. Use layer 1 in the detection mask.',
 16:'Main has one enum State { PLAYING, WON, LOST }. finish changes state once, disables Player.enabled, stops RoundTimer and updates Message. add_score returns early after an ending.',
 17:'Add Timer named RoundTimer under Main. Set One Shot on; connect timeout to lose once. Start it with 60 seconds in _ready. Both finish paths stop it. Test a short limit, then restore 60.',
 18:'Add restart input action with physical R key and controller A. _process checks is_action_just_pressed and reloads the current scene. Add a Replay Button and connect pressed to restart. The input event is optional; the physical Retroid APK test needs a parent.',
@@ -47,6 +48,6 @@ def enrich_external(l):
  if l['mode']=='scratch':
   note,recipe,result=SCRATCH[d];l.update(walkthrough=[note,'Use the recipe below with the named sprites. It describes blocks to assemble; it is not code to paste.','The optional .sb3 checkpoint is for comparing a working pattern. Build and change your own version.'],guideCode=recipe,success=result,checkpoint=f'scratch-day-{d}.sb3')
  elif l['mode']=='godot':
-  file='Player.gd' if d in (9,10,21,22,23,25) else 'Treasure.gd' if d in (11,12,13) else 'Hazard.gd' if d==15 else 'Main.gd'
-  l.update(walkthrough=[GODOT_NOTES[d],'The optional reference uses these same node names. Select Main → Course Day in Inspector to compare the feature set for this lesson.','Build in your own project. Use the reference to locate the pattern, rather than copying a finished game without understanding it.'],guideCode=(ROOT/'godot-reference'/file).read_text(),guideFile=file,success='Check the described feature, then replay the project. '+GODOT_NOTES[d])
+  file='Player.gd' if d in (9,10,21,22,23) else 'Treasure.gd' if d==11 else 'Hazard.gd' if d==15 else 'Main.gd'
+  l.update(walkthrough=[GODOT_NOTES[d],'The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.','Build in your own project. Use the reference to locate the pattern, rather than copying a finished game without understanding it.'],guideCode=main_script(d) if file=='Main.gd' else (ROOT/'godot-reference'/file).read_text(),guideMain=main_script(d),guideFile=file,success='Check the described feature, then replay the project. '+GODOT_NOTES[d])
  return l
