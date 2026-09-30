@@ -1,6 +1,6 @@
 """Validate source, then produce versioned static files for Caddy."""
 from pathlib import Path
-import hashlib,json,shutil,subprocess,os
+import hashlib,json,shutil,subprocess,os,re
 root=Path(__file__).resolve().parent; public=root/'public';dist=root/'dist'
 data=json.loads((public/'curriculum.json').read_text())
 assert set(data['paths'])=={'story','game','dev'}
@@ -22,11 +22,12 @@ for p in (public/'assets').glob('*.webp'):emit('assets/'+p.name,p.read_bytes())
 for name in ['curriculum.json','starter-godot.zip','favicon.svg']:emit(name,(public/name).read_bytes())
 for name in ['style.css','engine.js','app.js']:
  text=(public/name).read_text()
- for before,after in mapping.items():text=text.replace(before,after)
+ for before,after in mapping.items():text=re.sub(re.escape(before)+r'(?![A-Za-z0-9_])',lambda _match:after,text)
  emit(name,text.encode())
 text=(public/'index.html').read_text()
-for before,after in mapping.items():text=text.replace(before,after)
+for before,after in mapping.items():text=re.sub(re.escape(before)+r'(?![A-Za-z0-9_])',lambda _match:after,text)
 assert '<script>' not in text and 'script src=' in text
 (dist/'index.html').write_text(text)
 (dist/'404.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Quest not found</title><h1>That quest is not here.</h1><p><a href="/">Return to Pixel Quest Club</a></p></html>')
-print('Validated 90 lessons; built versioned static assets in dist/.')
+for script in dist.glob('*.js'):subprocess.run([node,'--check',str(script)],check=True)
+print('Validated 90 lessons and generated JavaScript; built versioned static assets in dist/.')
