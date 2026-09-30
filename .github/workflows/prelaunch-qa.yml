@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: npm install --ignore-scripts --no-audit --no-fund
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install chromium
       - name: Build and regression tests
         run: |
           python3 build.py
