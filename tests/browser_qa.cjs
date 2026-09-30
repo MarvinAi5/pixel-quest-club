@@ -9,7 +9,7 @@ function log(name){report.checks.push(name);console.log('PASS '+name);}
 async function screenshot(page,name){const file=name+'.png';await page.screenshot({path:path.join(OUT,file),fullPage:true});report.screenshots.push(file);}
 async function click(page,action,value){const sel=`[data-action="${action}"]${value===undefined?'':`[data-value="${value}"]`}`;await page.locator(sel).filter({visible:true}).first().click();}
 async function open(page){page.on('dialog',d=>d.accept());page.on('pageerror',e=>report.errors.push(e.message));await page.goto(URL);await page.getByRole('heading',{name:'What would you like to make?'}).waitFor();}
-async function quest(page,pathName,day=1){await click(page,'path',pathName);await click(page,'day',day);await page.locator('#stage').waitFor();}
+async function quest(page,pathName,day=1){await click(page,'path',pathName);await click(page,'day',day);await page.locator('#stage').waitFor({state:'attached'});}
 async function noOverflow(page){assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'Unexpected horizontal overflow');}
 async function signOut(page){await click(page,'account');await page.locator('#dialog [data-action="logout"]').click();await page.getByRole('heading',{name:'What would you like to make?'}).waitFor();}
 async function login(page,name,secret){await click(page,'account');await page.locator('#login-name').fill(name);await page.locator('#login-secret').fill(secret);await page.locator('#login-form button.primary').click();await page.locator('#dialog').waitFor({state:'hidden'});}
