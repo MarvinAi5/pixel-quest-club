@@ -7258,7 +7258,7 @@
       "concept": "Area2D signals tell us when another body enters an area.",
       "steps": [
         "Create a treasure Area2D with art and CollisionShape2D",
-        "Connect body_entered to a script",
+        "Attach the pickup script that connects body_entered",
         "Remove the treasure when the player enters"
       ],
       "recall": "Why use an area for a pickup?",
@@ -7499,7 +7499,7 @@
       "concept": "Hazards need detection and a clear consequence.",
       "steps": [
         "Create a hazard Area2D",
-        "Connect its body_entered signal",
+        "Attach the hazard script that connects body_entered",
         "Tell Main to switch to a losing state"
       ],
       "recall": "How does the player learn what happened?",
@@ -7717,9 +7717,9 @@
           "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
         }
       ],
-      "success": "Check the described feature, then replay the project. Add restart input action with physical R key and controller A. _process checks is_action_just_pressed and reloads the current scene. Add a Replay Button and connect pressed to restart. The input event is optional; the physical Retroid APK test needs a parent.",
+      "success": "Check the described feature, then replay the project. Add restart input action with physical R key and controller A. _process checks is_action_just_pressed and reloads the current scene. Add a Button named Restart under CanvasLayer, set its text to Replay, and use the example’s pressed connection to restart. The input event is optional; the physical Retroid APK test needs a parent.",
       "walkthrough": [
-        "Add restart input action with physical R key and controller A. _process checks is_action_just_pressed and reloads the current scene. Add a Replay Button and connect pressed to restart. The input event is optional; the physical Retroid APK test needs a parent.",
+        "Add restart input action with physical R key and controller A. _process checks is_action_just_pressed and reloads the current scene. Add a Button named Restart under CanvasLayer, set its text to Replay, and use the example’s pressed connection to restart. The input event is optional; the physical Retroid APK test needs a parent.",
         "The optional reference uses these same node names. The Main.gd examples below include only the features learned so far; named child nodes must exist. Select Main → Course Day in Inspector to compare the feature set for this lesson.",
         "Build in your own project. Use the reference to locate the pattern, rather than copying a finished game without understanding it."
       ],
