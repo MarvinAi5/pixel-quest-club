@@ -54,6 +54,17 @@ class ClubTests(unittest.TestCase):
   for bad in [{'schema':1,'completed':[]},{'schema':1,'projects':[]},{'schema':1,'completed':{'story-999':True}},{'schema':1,'notes':{'story-1':'x'*401}},{'schema':1,'checks':{'story-1':['wrong']}},{'schema':1,'projects':{'__proto__':{'schema':1}}}]:
    self.assertEqual(child.call('save',{'payload':bad,'revision':1})[0],400)
   status,saved=child.call('save');self.assertEqual(saved['revision'],1);self.assertEqual(saved['payload'],valid)
+ def test_account_cap_is_atomic_under_concurrent_creation(self):
+  import importlib.util,concurrent.futures
+  spec=importlib.util.spec_from_file_location('qa_server',ROOT/'server.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+  with tempfile.TemporaryDirectory() as directory:
+   module.DATA=Path(directory);module.MAX_ACCOUNTS=3;module.init()
+   def create(n):
+    try:module.create_user('parent','test-race-password',username=f'race-parent-{n}');return True
+    except ValueError:return False
+   with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:results=list(pool.map(create,range(6)))
+   self.assertEqual(sum(results),3)
+   with module.db() as db:self.assertEqual(db.execute('SELECT count(*) FROM users').fetchone()[0],3)
  def test_authentication_attempt_limit(self):
   client=Client()
   for _ in range(10):self.assertEqual(client.call('login',{'username':'wrong-person','secret':'000000'})[0],401)
