@@ -1,0 +1,3836 @@
+{
+  "month": "October",
+  "year": 2026,
+  "paths": {
+    "story": {
+      "name": "Story Makers",
+      "ages": "Suggested ages 6–7",
+      "time": "10–15 min",
+      "summary": "Make characters move, talk and tell your own stories. Picture blocks; no other app needed.",
+      "avatar": 11
+    },
+    "game": {
+      "name": "Game Makers",
+      "ages": "Suggested ages 8–10",
+      "time": "20–30 min",
+      "summary": "Build games with scores, choices and challenges. Start here, then explore Scratch.",
+      "avatar": 17
+    },
+    "dev": {
+      "name": "Game Developers",
+      "ages": "Suggested ages 11+ · or ready for typed code",
+      "time": "30–45 min",
+      "summary": "Practice code, build in Godot and play your game on a computer or Retroid.",
+      "avatar": 18
+    }
+  },
+  "lessons": [
+    {
+      "id": "story-1",
+      "path": "story",
+      "day": 1,
+      "title": "Meet your companion",
+      "concept": "A command tells your character what to do. Run follows your commands.",
+      "steps": [
+        "Pick a character",
+        "Add Move right with a value of 1",
+        "Press Run and watch"
+      ],
+      "recall": "What changed when you pressed Run?",
+      "hint": "Press a command in the toolbox to add it.",
+      "challenge": "Try another theme without changing your commands.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-2",
+      "path": "story",
+      "day": 2,
+      "title": "A bigger step",
+      "concept": "A number changes how far the same command moves a character.",
+      "steps": [
+        "Change Move right to 2",
+        "Run again",
+        "Try 4 and compare"
+      ],
+      "recall": "Which number moved farther?",
+      "hint": "The number box inside a block is editable.",
+      "challenge": "Find a number that stops near the middle.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-3",
+      "path": "story",
+      "day": 3,
+      "title": "First, then next",
+      "concept": "A sequence runs in order, from top to bottom.",
+      "steps": [
+        "Add Move right 2",
+        "Add Say Hello",
+        "Run and describe the order"
+      ],
+      "recall": "What happens first?",
+      "hint": "Use the up and down buttons to change block order.",
+      "challenge": "Make a three-command sequence.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-4",
+      "path": "story",
+      "day": 4,
+      "title": "Up and down",
+      "concept": "Characters have a position. Up and down change one part of it.",
+      "steps": [
+        "Add Move up 1",
+        "Add Move down 2",
+        "Run and find the finishing spot"
+      ],
+      "recall": "Did the character finish higher or lower?",
+      "hint": "One down step cancels one up step.",
+      "challenge": "Return to the starting height.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-5",
+      "path": "story",
+      "day": 5,
+      "title": "Change the order",
+      "concept": "The same commands can tell a different story in a new order.",
+      "steps": [
+        "Add Say Ready",
+        "Add Move right 2",
+        "Swap the blocks and run both versions"
+      ],
+      "recall": "How did the order change the story?",
+      "hint": "Use the block's earlier/later controls.",
+      "challenge": "Make a surprise ending.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-6",
+      "path": "story",
+      "day": 6,
+      "title": "Take a breath",
+      "concept": "Wait pauses a sequence before the next action.",
+      "steps": [
+        "Add Say Hello",
+        "Add Wait 1",
+        "Add Say Goodbye and run"
+      ],
+      "recall": "Where did the pause happen?",
+      "hint": "Wait uses seconds, not movement steps.",
+      "challenge": "Use two pauses in a conversation.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        },
+        {
+          "op": "wait",
+          "value": 1,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Your turn!",
+          "target": 2
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-7",
+      "path": "story",
+      "day": 7,
+      "title": "Show what you know",
+      "concept": "You can create a sequence without copying someone else's.",
+      "steps": [
+        "Clear only the practice program",
+        "Make move, say and wait actions",
+        "Explain it to a grown-up"
+      ],
+      "recall": "Which command would you change first?",
+      "hint": "A tiny finished story is enough.",
+      "challenge": "Let someone predict your program.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-8",
+      "path": "story",
+      "day": 8,
+      "title": "Do it again",
+      "concept": "Repeat performs the same movement several times.",
+      "steps": [
+        "Add Repeat right 1 with count 3",
+        "Run",
+        "Compare with three Move right 1 blocks"
+      ],
+      "recall": "What does the repeat count mean?",
+      "hint": "Repeat has a direction, step size and count.",
+      "challenge": "Try a count of 4.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "repeat",
+          "value": 1,
+          "count": 3,
+          "direction": "right",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-9",
+      "path": "story",
+      "day": 9,
+      "title": "Count the repeats",
+      "concept": "Changing a loop count changes how many times it acts.",
+      "steps": [
+        "Make Repeat up 1 count 2",
+        "Predict where it stops",
+        "Change count to 3 and run"
+      ],
+      "recall": "Did your prediction match?",
+      "hint": "Count the repetitions on your fingers.",
+      "challenge": "Return down using another repeat.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "repeat",
+          "value": 1,
+          "count": 3,
+          "direction": "right",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-10",
+      "path": "story",
+      "day": 10,
+      "title": "Say it your way",
+      "concept": "Speech gives a character personality; your words are part of the program.",
+      "steps": [
+        "Add a short greeting in Say",
+        "Run and read it",
+        "Change the greeting to fit your theme"
+      ],
+      "recall": "What stayed the same when words changed?",
+      "hint": "Short phrases fit on the stage.",
+      "challenge": "Tell a joke in two speech blocks.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        },
+        {
+          "op": "wait",
+          "value": 1,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Your turn!",
+          "target": 2
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-11",
+      "path": "story",
+      "day": 11,
+      "title": "Two companions",
+      "concept": "A program can choose which character receives its actions.",
+      "steps": [
+        "Select Companion 2 in a block",
+        "Make it say Hello",
+        "Make Companion 1 answer"
+      ],
+      "recall": "Which character did each block control?",
+      "hint": "The companion number is on each block.",
+      "challenge": "Move both characters to meet.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-12",
+      "path": "story",
+      "day": 12,
+      "title": "When I tap",
+      "concept": "An event starts a program when something happens.",
+      "steps": [
+        "Change the trigger to Tap character",
+        "Run to get ready",
+        "Tap your character to start the sequence"
+      ],
+      "recall": "What started your commands?",
+      "hint": "Run prepares tap-triggered programs; then tap the stage character.",
+      "challenge": "Give the character a surprise greeting.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-13",
+      "path": "story",
+      "day": 13,
+      "title": "A little tune",
+      "concept": "Sound can give feedback when an action happens.",
+      "steps": [
+        "Add Sound",
+        "Put it after a greeting",
+        "Run, then try the sound-off switch"
+      ],
+      "recall": "Can the story work without sound?",
+      "hint": "A tap or Run unlocks sound on most browsers.",
+      "challenge": "Pair a tune with a movement.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        },
+        {
+          "op": "wait",
+          "value": 1,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Your turn!",
+          "target": 2
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-14",
+      "path": "story",
+      "day": 14,
+      "title": "Fix the mix-up",
+      "concept": "Debugging means finding why the result differs from your plan.",
+      "steps": [
+        "Make Say Goodbye before Hello",
+        "Run and notice the mix-up",
+        "Reorder the blocks and run again"
+      ],
+      "recall": "What did you fix?",
+      "hint": "Change one thing at a time.",
+      "challenge": "Ask a sibling to mix up two blocks.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-15",
+      "path": "story",
+      "day": 15,
+      "title": "A new scene",
+      "concept": "A scene is a new part of your story. You can create two scenes.",
+      "steps": [
+        "Choose Scene 2 and a background theme",
+        "Give it a greeting",
+        "Return to Scene 1"
+      ],
+      "recall": "How are the scenes different?",
+      "hint": "Each scene has its own program and starting layout.",
+      "challenge": "Use a different companion in Scene 2.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-16",
+      "path": "story",
+      "day": 16,
+      "title": "Go to the next scene",
+      "concept": "A scene-change command moves the story to another page.",
+      "steps": [
+        "In Scene 1 add a short greeting",
+        "Add Next scene",
+        "Run and watch Scene 2 begin"
+      ],
+      "recall": "Which command changed scenes?",
+      "hint": "Next scene starts the other scene's Start program.",
+      "challenge": "Add a goodbye before changing.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-17",
+      "path": "story",
+      "day": 17,
+      "title": "Send a message",
+      "concept": "A message lets one sequence start another character's sequence.",
+      "steps": [
+        "Choose Message as Scene 2's trigger",
+        "In Scene 1 add Send message",
+        "Run and watch Scene 2 respond"
+      ],
+      "recall": "What made the other scene start?",
+      "hint": "Send message uses the Message trigger in the other scene.",
+      "challenge": "Make a call-and-response story.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-18",
+      "path": "story",
+      "day": 18,
+      "title": "Hide and reveal",
+      "concept": "Showing and hiding a character can create a surprise.",
+      "steps": [
+        "Add Hide for Companion 2",
+        "Wait 1",
+        "Add Show for Companion 2"
+      ],
+      "recall": "What was hidden during the wait?",
+      "hint": "Hidden characters still have their own position.",
+      "challenge": "Add a greeting after the reveal.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-19",
+      "path": "story",
+      "day": 19,
+      "title": "Choose a beginning",
+      "concept": "A story needs a clear way to start.",
+      "steps": [
+        "Use a Start trigger in Scene 1",
+        "Write a welcome line",
+        "Test from Reset and Run"
+      ],
+      "recall": "Would a friend know how to begin?",
+      "hint": "The stage title and Run button help the player.",
+      "challenge": "Try a Tap character beginning instead.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-20",
+      "path": "story",
+      "day": 20,
+      "title": "Choose your story",
+      "concept": "A small plan helps you finish something that is your own.",
+      "steps": [
+        "Pick characters and a setting",
+        "Write or say a beginning and ending",
+        "Build the first three actions"
+      ],
+      "recall": "What is your story about?",
+      "hint": "Choose one idea you can finish.",
+      "challenge": "Use two scenes if you want.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-21",
+      "path": "story",
+      "day": 21,
+      "title": "Build the beginning",
+      "concept": "The first scene introduces the character and goal.",
+      "steps": [
+        "Open your saved project",
+        "Add a greeting and movement",
+        "Run and revise one action"
+      ],
+      "recall": "What does your character want?",
+      "hint": "You can keep the program short.",
+      "challenge": "Make Companion 2 reply.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-22",
+      "path": "story",
+      "day": 22,
+      "title": "Build the middle",
+      "concept": "The middle shows something happening or changing.",
+      "steps": [
+        "Add a repeat or wait",
+        "Add a second character action",
+        "Test the sequence order"
+      ],
+      "recall": "What changes in the middle?",
+      "hint": "A pause can make a moment clearer.",
+      "challenge": "Include a reveal.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-23",
+      "path": "story",
+      "day": 23,
+      "title": "Build the ending",
+      "concept": "An ending tells the player that the story is finished.",
+      "steps": [
+        "Add a final speech line",
+        "Move to Scene 2 if needed",
+        "Run the whole story"
+      ],
+      "recall": "How will the player know it ended?",
+      "hint": "Say The end is a good first ending.",
+      "challenge": "Invent your own ending phrase.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-24",
+      "path": "story",
+      "day": 24,
+      "title": "Make it tappable",
+      "concept": "A tap event lets the player take part.",
+      "steps": [
+        "Choose Tap character for a scene",
+        "Write its response",
+        "Reset, Run and test the tap"
+      ],
+      "recall": "What does the player do?",
+      "hint": "Tell your player which character to tap.",
+      "challenge": "Make the tap reveal Companion 2.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-25",
+      "path": "story",
+      "day": 25,
+      "title": "Make it readable",
+      "concept": "Clear words and actions help someone understand your creation.",
+      "steps": [
+        "Shorten a long speech line",
+        "Put waits between speech",
+        "Check with sound turned off"
+      ],
+      "recall": "What helped you understand the story?",
+      "hint": "Say one thing at a time.",
+      "challenge": "Choose two contrasting character colors.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-26",
+      "path": "story",
+      "day": 26,
+      "title": "Catch-up and play",
+      "concept": "Rest and revision are part of learning. Choose one unfinished task.",
+      "steps": [
+        "Open a favorite lesson",
+        "Finish one small change",
+        "Play your project for fun"
+      ],
+      "recall": "What would you like to improve?",
+      "hint": "You do not have to add a new feature today.",
+      "challenge": "Try an optional earlier challenge.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-27",
+      "path": "story",
+      "day": 27,
+      "title": "Test with a friend",
+      "concept": "A playtest reveals what a new player finds confusing.",
+      "steps": [
+        "Ask someone to press Run",
+        "Watch without explaining",
+        "Fix one confusing part"
+      ],
+      "recall": "Where did your player need help?",
+      "hint": "Observe before changing the program.",
+      "challenge": "Ask what they liked best.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-28",
+      "path": "story",
+      "day": 28,
+      "title": "Fix one thing",
+      "concept": "Small fixes can make a story easier to enjoy.",
+      "steps": [
+        "Choose one issue from yesterday",
+        "Change just that part",
+        "Run the entire story again"
+      ],
+      "recall": "Did the fix help?",
+      "hint": "Save a backup before a large change.",
+      "challenge": "Explain the fix in your own words.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-29",
+      "path": "story",
+      "day": 29,
+      "title": "Save your creation",
+      "concept": "A saved project lets you return and make another version.",
+      "steps": [
+        "Give your project a title",
+        "Save or download its project file",
+        "Reset and replay to verify it"
+      ],
+      "recall": "Where will you find your creation later?",
+      "hint": "Guests can keep a local draft on their own device or download it.",
+      "challenge": "Keep a second themed version.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "story-30",
+      "path": "story",
+      "day": 30,
+      "title": "Creator showcase",
+      "concept": "You can explain and improve a program you made.",
+      "steps": [
+        "Show your two-scene story",
+        "Explain an event and a repeat",
+        "Change one command without a recipe"
+      ],
+      "recall": "Which part did you make yourself?",
+      "hint": "A short story you understand is a success.",
+      "challenge": "Plan a new story for November.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Using this builder",
+          "url": "#help-builder"
+        }
+      ]
+    },
+    {
+      "id": "game-1",
+      "path": "game",
+      "day": 1,
+      "title": "Meet the game lab",
+      "concept": "Games follow rules written as commands.",
+      "steps": [
+        "Choose a theme and character",
+        "Add Move right 2",
+        "Run and predict the result"
+      ],
+      "recall": "What rule did you create?",
+      "hint": "The browser lab is a small teaching tool.",
+      "challenge": "Change a rule and compare.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-2",
+      "path": "game",
+      "day": 2,
+      "title": "Positions on the stage",
+      "concept": "Position is described by horizontal and vertical movement.",
+      "steps": [
+        "Move right 2 and up 1",
+        "Run",
+        "Change one distance"
+      ],
+      "recall": "Which command changes height?",
+      "hint": "Up and down change the vertical position.",
+      "challenge": "Return to your starting position.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-3",
+      "path": "game",
+      "day": 3,
+      "title": "Events start actions",
+      "concept": "An event is a reason for a program to run.",
+      "steps": [
+        "Try the Start trigger",
+        "Try Tap character",
+        "Explain the difference"
+      ],
+      "recall": "What started each version?",
+      "hint": "Run arms a tap-triggered program.",
+      "challenge": "Create a welcome after a tap.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-4",
+      "path": "game",
+      "day": 4,
+      "title": "Variables remember",
+      "concept": "A variable stores a value that can change.",
+      "steps": [
+        "Set the target to 3",
+        "Place three treasures on the stage",
+        "Run and check the score display"
+      ],
+      "recall": "What does score remember?",
+      "hint": "Tap the stage in Layout mode to place treasures.",
+      "challenge": "Compare targets 3 and 5.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-5",
+      "path": "game",
+      "day": 5,
+      "title": "Collect a treasure",
+      "concept": "Contact with a treasure can increase the score.",
+      "steps": [
+        "Place one treasure near the player",
+        "Add movement toward it",
+        "Run and observe the score"
+      ],
+      "recall": "When should the score change?",
+      "hint": "Collectibles are gathered when the character gets close.",
+      "challenge": "Collect two treasures with one route.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-6",
+      "path": "game",
+      "day": 6,
+      "title": "Conditions choose",
+      "concept": "An if-condition performs an action only when its test is true.",
+      "steps": [
+        "Add If score reached target, say You win",
+        "Run with too few treasures",
+        "Run again with enough"
+      ],
+      "recall": "When did the message appear?",
+      "hint": "Set a small target while testing.",
+      "challenge": "Write your own win message.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        },
+        {
+          "op": "wait",
+          "value": 1,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Your turn!",
+          "target": 2
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-7",
+      "path": "game",
+      "day": 7,
+      "title": "Build without a recipe",
+      "concept": "A small independent build checks what you understand.",
+      "steps": [
+        "Make a three-treasure route",
+        "Add a score condition",
+        "Explain your event and variable"
+      ],
+      "recall": "What part could you change alone?",
+      "hint": "Reuse ideas, but choose your own route.",
+      "challenge": "Ask someone to predict the score.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-8",
+      "path": "game",
+      "day": 8,
+      "title": "Loops save repetition",
+      "concept": "A repeat block replaces identical actions.",
+      "steps": [
+        "Build three right steps",
+        "Replace them with Repeat right count 3",
+        "Compare both versions"
+      ],
+      "recall": "Why is a loop useful?",
+      "hint": "Repeat count means total repetitions.",
+      "challenge": "Use a loop to collect a row.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "repeat",
+          "value": 1,
+          "count": 3,
+          "direction": "right",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-9",
+      "path": "game",
+      "day": 9,
+      "title": "Tune the speed",
+      "concept": "A speed value changes how fast movement happens.",
+      "steps": [
+        "Set speed to 2",
+        "Run a long movement",
+        "Compare with speed 6"
+      ],
+      "recall": "Did distance change too?",
+      "hint": "Speed changes timing, not the number of steps.",
+      "challenge": "Choose a comfortable speed.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "repeat",
+          "value": 1,
+          "count": 3,
+          "direction": "right",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-10",
+      "path": "game",
+      "day": 10,
+      "title": "Tap controls",
+      "concept": "A game needs controls its players can use.",
+      "steps": [
+        "Switch the trigger to Controls",
+        "Run",
+        "Use the on-screen direction buttons"
+      ],
+      "recall": "Can you play without a keyboard?",
+      "hint": "The arrow keys also work in Controls mode.",
+      "challenge": "Test on a tablet in landscape.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        },
+        {
+          "op": "wait",
+          "value": 1,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Your turn!",
+          "target": 2
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-11",
+      "path": "game",
+      "day": 11,
+      "title": "A fair obstacle",
+      "concept": "A hazard introduces a consequence; feedback tells players what happened.",
+      "steps": [
+        "In Layout mode place a hazard",
+        "Use Controls and touch it",
+        "Move it to a fairer spot"
+      ],
+      "recall": "Was the obstacle avoidable?",
+      "hint": "Reset clears the current play state.",
+      "challenge": "Add a safer route.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-12",
+      "path": "game",
+      "day": 12,
+      "title": "An ending and replay",
+      "concept": "A game should tell players when they win and let them play again.",
+      "steps": [
+        "Set a reachable treasure target",
+        "Reach it in Controls mode",
+        "Reset and play again"
+      ],
+      "recall": "What must reset between rounds?",
+      "hint": "Score and collected items reset; your layout stays.",
+      "challenge": "Test a losing round too.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-13",
+      "path": "game",
+      "day": 13,
+      "title": "Your own small game",
+      "concept": "Design combines a player, action, goal and challenge.",
+      "steps": [
+        "Name your game",
+        "Arrange treasures and a hazard",
+        "Write the instructions using Say"
+      ],
+      "recall": "What is the goal?",
+      "hint": "Keep the first game tiny.",
+      "challenge": "Try another theme with the same rules.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        },
+        {
+          "op": "wait",
+          "value": 1,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Your turn!",
+          "target": 2
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-14",
+      "path": "game",
+      "day": 14,
+      "title": "Test your rules",
+      "concept": "Testing includes trying things that should fail.",
+      "steps": [
+        "Try a route that misses a treasure",
+        "Try hitting a hazard",
+        "Try winning and restarting"
+      ],
+      "recall": "What happens in each case?",
+      "hint": "Write down one issue to fix.",
+      "challenge": "Have someone else test.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-15",
+      "path": "game",
+      "day": 15,
+      "title": "Meet Scratch",
+      "concept": "Scratch lets you build larger projects with sprites and blocks.",
+      "steps": [
+        "Open Scratch Create on a compatible computer",
+        "Find stage, sprites and code area",
+        "Save a project on the computer"
+      ],
+      "recall": "Which part is like our stage?",
+      "hint": "Use the Scratch guide in Help; no public sharing is required.",
+      "challenge": "Give your sprite a themed name.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-16",
+      "path": "game",
+      "day": 16,
+      "title": "Move a Scratch sprite",
+      "concept": "Events and motion blocks become a playable character.",
+      "steps": [
+        "Add when green flag clicked",
+        "Add go to x -150 y 0",
+        "Add when right arrow pressed, change x by 10"
+      ],
+      "recall": "Which blocks initialize the game?",
+      "hint": "Start with one direction, then add others.",
+      "challenge": "Add an on-screen button for touch.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-17",
+      "path": "game",
+      "day": 17,
+      "title": "Scratch repetition",
+      "concept": "A forever loop checks rules while a game runs.",
+      "steps": [
+        "Add a forever block under the green flag",
+        "Inside use if key right arrow pressed",
+        "Inside change x by 4"
+      ],
+      "recall": "Why check the key repeatedly?",
+      "hint": "Keep the if block inside forever.",
+      "challenge": "Add left, up and down.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-18",
+      "path": "game",
+      "day": 18,
+      "title": "Scratch treasure",
+      "concept": "A second sprite can detect contact with the player.",
+      "steps": [
+        "Add a treasure sprite",
+        "Under green flag use forever and if touching Player",
+        "Hide it when touched"
+      ],
+      "recall": "Which sprite detects contact?",
+      "hint": "Choose your actual player name in touching.",
+      "challenge": "Make it appear at a random position.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-19",
+      "path": "game",
+      "day": 19,
+      "title": "Scratch score",
+      "concept": "A variable counts the treasures collected.",
+      "steps": [
+        "Create score for all sprites",
+        "Set score to 0 at start",
+        "Change score by 1 before hiding a touched treasure"
+      ],
+      "recall": "Where should score reset?",
+      "hint": "Avoid adding score repeatedly for one contact.",
+      "challenge": "Show the score on the stage.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-20",
+      "path": "game",
+      "day": 20,
+      "title": "Plan the finished game",
+      "concept": "A one-page plan keeps the game manageable.",
+      "steps": [
+        "Choose a theme",
+        "Write player, action, goal and hazard",
+        "List only essential features"
+      ],
+      "recall": "What could you leave out?",
+      "hint": "A five-treasure collector is enough.",
+      "challenge": "Draw the layout on paper.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-21",
+      "path": "game",
+      "day": 21,
+      "title": "Build the player",
+      "concept": "Complete the controls before adding more features.",
+      "steps": [
+        "Create the themed player",
+        "Add all four directions",
+        "Test start position and movement"
+      ],
+      "recall": "Can another person move it?",
+      "hint": "Keep movement code on the player sprite.",
+      "challenge": "Add boundary checks.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-22",
+      "path": "game",
+      "day": 22,
+      "title": "Build collectibles",
+      "concept": "Several treasures make the goal interesting.",
+      "steps": [
+        "Make one reliable treasure",
+        "Duplicate it to several positions",
+        "Test score once per pickup"
+      ],
+      "recall": "Did every treasure count once?",
+      "hint": "Use show at the start and hide after collection.",
+      "challenge": "Use clones if you already understand them.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-23",
+      "path": "game",
+      "day": 23,
+      "title": "Build the hazard",
+      "concept": "A hazard needs a clear consequence.",
+      "steps": [
+        "Add a hazard sprite",
+        "Detect touching the player",
+        "Send a Lose broadcast or stop the round"
+      ],
+      "recall": "What should losing change?",
+      "hint": "A separate lose message helps coordinate sprites.",
+      "challenge": "Add one life variable.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-24",
+      "path": "game",
+      "day": 24,
+      "title": "Win and restart",
+      "concept": "Broadcasts can coordinate a complete ending.",
+      "steps": [
+        "When score reaches target broadcast Win",
+        "Show a win backdrop or message",
+        "Reset score and show treasures on green flag"
+      ],
+      "recall": "What needs to restart?",
+      "hint": "Test replay, not just the first win.",
+      "challenge": "Add a replay button.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-25",
+      "path": "game",
+      "day": 25,
+      "title": "Explain the controls",
+      "concept": "Good instructions help players start independently.",
+      "steps": [
+        "Write a short instruction screen",
+        "Show the target",
+        "Ask a sibling to start without help"
+      ],
+      "recall": "Were the controls clear?",
+      "hint": "Use large touch targets if needed.",
+      "challenge": "Add a sound-off option.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-26",
+      "path": "game",
+      "day": 26,
+      "title": "Catch-up day",
+      "concept": "Finishing matters more than adding features.",
+      "steps": [
+        "Pick one missing feature",
+        "Complete it",
+        "Save a working version"
+      ],
+      "recall": "What is essential to finish?",
+      "hint": "Remove a feature if it prevents finishing.",
+      "challenge": "Play someone else's creation with permission.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-27",
+      "path": "game",
+      "day": 27,
+      "title": "Family playtest",
+      "concept": "Feedback helps you find confusing rules.",
+      "steps": [
+        "Ask two people to play",
+        "Watch without coaching",
+        "Write two useful observations"
+      ],
+      "recall": "What confused your players?",
+      "hint": "Ask where they got stuck.",
+      "challenge": "Compare computer and tablet controls.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-28",
+      "path": "game",
+      "day": 28,
+      "title": "Fix and balance",
+      "concept": "Make one change and retest before making another.",
+      "steps": [
+        "Fix the biggest issue",
+        "Adjust speed or hazard position",
+        "Replay win, lose and restart"
+      ],
+      "recall": "Did the change improve fairness?",
+      "hint": "Keep a saved copy before editing.",
+      "challenge": "Test an unexpected input.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-29",
+      "path": "game",
+      "day": 29,
+      "title": "Save the source",
+      "concept": "A project file preserves the editable game.",
+      "steps": [
+        "Use File > Save to your computer",
+        "Keep a dated .sb3 copy",
+        "Reopen it to check it works"
+      ],
+      "recall": "Is a screenshot an editable project?",
+      "hint": "The project file, not the picture, contains the blocks.",
+      "challenge": "Keep a second theme version.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "game-30",
+      "path": "game",
+      "day": 30,
+      "title": "Game night",
+      "concept": "A finished game is playable and explainable.",
+      "steps": [
+        "Show your game",
+        "Explain a variable, loop and condition",
+        "Change one rule independently"
+      ],
+      "recall": "What are you proud of learning?",
+      "hint": "Browser-lab projects count as browser creations; Scratch projects are tracked separately.",
+      "challenge": "Choose your November improvement.",
+      "mode": "scratch",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Scratch tutorials",
+          "url": "https://scratch.mit.edu/ideas"
+        },
+        {
+          "label": "Open Scratch editor",
+          "url": "https://scratch.mit.edu/projects/editor/"
+        },
+        {
+          "label": "Scratch browser requirements",
+          "url": "https://mitscratch.freshdesk.com/en/support/solutions/articles/4000156845-what-are-the-system-requirements-for-scratch-"
+        }
+      ]
+    },
+    {
+      "id": "dev-1",
+      "path": "dev",
+      "day": 1,
+      "title": "Your first instructions",
+      "concept": "A program is a precise sequence. Our lab uses teaching commands, not GDScript.",
+      "steps": [
+        "Open the code tab",
+        "Run move right 2",
+        "Change the number and run again"
+      ],
+      "recall": "What did the computer follow?",
+      "hint": "The lab command list is beside the editor.",
+      "challenge": "Explain why exact spelling matters.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-2",
+      "path": "dev",
+      "day": 2,
+      "title": "Variables and values",
+      "concept": "Values control behavior; real variables give values names.",
+      "steps": [
+        "Change speed 3 to speed 6",
+        "Compare the timing",
+        "Read the GDScript variable example in the guide"
+      ],
+      "recall": "What can you change without rewriting the rule?",
+      "hint": "Our small lab has speed and target commands.",
+      "challenge": "Predict before running.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-3",
+      "path": "dev",
+      "day": 3,
+      "title": "Functions are reusable actions",
+      "concept": "A function gives a reusable action a name.",
+      "steps": [
+        "Make a short move-and-say sequence",
+        "Run it twice",
+        "Read the function example and identify the function body"
+      ],
+      "recall": "Why put an action in a function?",
+      "hint": "Indentation groups GDScript statements.",
+      "challenge": "Describe a function in everyday language.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-4",
+      "path": "dev",
+      "day": 4,
+      "title": "If makes a decision",
+      "concept": "Conditions decide whether an action should run.",
+      "steps": [
+        "Set target to 1",
+        "Add ifwin You win",
+        "Run a route with and without a pickup"
+      ],
+      "recall": "What is the condition testing?",
+      "hint": "The lab uses ifwin as a limited teaching command.",
+      "challenge": "Find a real-life if-condition.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-5",
+      "path": "dev",
+      "day": 5,
+      "title": "Loops repeat work",
+      "concept": "Loops perform actions several times.",
+      "steps": [
+        "Run repeat 3 right 1",
+        "Compare three move commands",
+        "Find the loop in the GDScript example"
+      ],
+      "recall": "When would a loop simplify code?",
+      "hint": "The lab repeat syntax is repeat COUNT DIRECTION STEPS.",
+      "challenge": "Try a different count.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-6",
+      "path": "dev",
+      "day": 6,
+      "title": "Debug a program",
+      "concept": "Useful debugging compares expected behavior with actual behavior.",
+      "steps": [
+        "Make a typo in move",
+        "Read the line-numbered error",
+        "Fix and rerun"
+      ],
+      "recall": "What did the error tell you?",
+      "hint": "This lab rejects unknown commands rather than executing arbitrary code.",
+      "challenge": "Change one thing at a time.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        },
+        {
+          "op": "wait",
+          "value": 1,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Your turn!",
+          "target": 2
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-7",
+      "path": "dev",
+      "day": 7,
+      "title": "Independent browser challenge",
+      "concept": "Understanding means predicting, changing and explaining.",
+      "steps": [
+        "Plan a treasure route",
+        "Write it in lab commands",
+        "Explain one condition and repeat"
+      ],
+      "recall": "Which part can you explain without help?",
+      "hint": "You may use the command reference, but choose your own route.",
+      "challenge": "Run another themed version.",
+      "mode": "browser",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-8",
+      "path": "dev",
+      "day": 8,
+      "title": "Meet Godot",
+      "concept": "Nodes do jobs; scenes group nodes into reusable pieces.",
+      "steps": [
+        "Install the current stable Godot 4 standard edition",
+        "Create a 2D project using Compatibility",
+        "Create a Node2D main scene and save it"
+      ],
+      "recall": "What is a scene?",
+      "hint": "Help includes setup steps and official documentation.",
+      "challenge": "Run an empty main scene.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "repeat",
+          "value": 1,
+          "count": 3,
+          "direction": "right",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-9",
+      "path": "dev",
+      "day": 9,
+      "title": "Player scene",
+      "concept": "CharacterBody2D provides a useful starting point for controlled movement.",
+      "steps": [
+        "Create a CharacterBody2D player scene",
+        "Add Sprite2D or Polygon2D and CollisionShape2D",
+        "Save Player.tscn and instance it in Main"
+      ],
+      "recall": "Which node holds the collision shape?",
+      "hint": "Use a simple shape before detailed art.",
+      "challenge": "Label your nodes clearly.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "repeat",
+          "value": 1,
+          "count": 3,
+          "direction": "right",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-10",
+      "path": "dev",
+      "day": 10,
+      "title": "Move and test early",
+      "concept": "Input actions separate controls from game logic.",
+      "steps": [
+        "Add movement actions in Project Settings > Input Map",
+        "Attach the movement script from Help",
+        "Run on the computer and test one controller if available"
+      ],
+      "recall": "Why use actions instead of a specific key everywhere?",
+      "hint": "Check script node type and exact action names.",
+      "challenge": "Parent can start Android export setup now.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        },
+        {
+          "op": "wait",
+          "value": 1,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Your turn!",
+          "target": 2
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-11",
+      "path": "dev",
+      "day": 11,
+      "title": "A pickup area",
+      "concept": "Area2D signals tell us when another body enters an area.",
+      "steps": [
+        "Create a treasure Area2D with art and CollisionShape2D",
+        "Connect body_entered to a script",
+        "Remove the treasure when the player enters"
+      ],
+      "recall": "Why use an area for a pickup?",
+      "hint": "Check collision layers and masks if it does not fire.",
+      "challenge": "Print a message before adding score.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-12",
+      "path": "dev",
+      "day": 12,
+      "title": "Score and signals",
+      "concept": "Signals let objects report events without owning all game logic.",
+      "steps": [
+        "Give the treasure a collected signal",
+        "Connect it to Main",
+        "Increment score in Main and update a Label"
+      ],
+      "recall": "Who owns the score?",
+      "hint": "The pickup guide shows a minimal signal pattern.",
+      "challenge": "Keep the player separate from the score label.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-13",
+      "path": "dev",
+      "day": 13,
+      "title": "Reusable scenes",
+      "concept": "One scene can create many instances of the same object.",
+      "steps": [
+        "Save the treasure scene",
+        "Instance five treasures in Main",
+        "Test each pickup and score"
+      ],
+      "recall": "What changes in every instance when you edit the scene?",
+      "hint": "Use a scene instance, not five copied scripts.",
+      "challenge": "Give instances different positions.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        },
+        {
+          "op": "wait",
+          "value": 1,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Your turn!",
+          "target": 2
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-14",
+      "path": "dev",
+      "day": 14,
+      "title": "Checkpoint and backup",
+      "concept": "A working checkpoint makes experiments safer.",
+      "steps": [
+        "Save the project",
+        "Copy the folder or commit it to your own version control",
+        "Test one complete pickup route"
+      ],
+      "recall": "Could you restore this version?",
+      "hint": "Do not back up only the exported APK.",
+      "challenge": "Write one problem to solve next.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-15",
+      "path": "dev",
+      "day": 15,
+      "title": "A hazard",
+      "concept": "Hazards need detection and a clear consequence.",
+      "steps": [
+        "Create a hazard Area2D",
+        "Connect its body_entered signal",
+        "Tell Main to switch to a losing state"
+      ],
+      "recall": "How does the player learn what happened?",
+      "hint": "Start with a stationary hazard.",
+      "challenge": "Add a brief visual feedback effect.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-16",
+      "path": "dev",
+      "day": 16,
+      "title": "Game states",
+      "concept": "Playing, won and lost should allow different actions.",
+      "steps": [
+        "Add a state variable or enum in Main",
+        "Stop scoring when not playing",
+        "Show distinct win and lose messages"
+      ],
+      "recall": "What should be disabled after a loss?",
+      "hint": "A single owner for state avoids conflicting rules.",
+      "challenge": "Pause the player after an ending.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-17",
+      "path": "dev",
+      "day": 17,
+      "title": "Timer and victory",
+      "concept": "A Timer can introduce a time limit without manual counting.",
+      "steps": [
+        "Add a Timer",
+        "Connect timeout to the losing state",
+        "Stop the timer after collecting the target"
+      ],
+      "recall": "Which event ends the round first?",
+      "hint": "Test with a generous time limit first.",
+      "challenge": "Display remaining time.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-18",
+      "path": "dev",
+      "day": 18,
+      "title": "Restart and handheld test",
+      "concept": "Restart must restore all state, objects and controls.",
+      "steps": [
+        "Add a restart input action",
+        "Reload the current scene or reset all state",
+        "Parent exports an early APK and tests on Retroid"
+      ],
+      "recall": "What must reset?",
+      "hint": "Android setup guide lists tools and export steps.",
+      "challenge": "Record controller button names on the device.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-19",
+      "path": "dev",
+      "day": 19,
+      "title": "Art and sound",
+      "concept": "Feedback supports understanding rather than hiding the rules.",
+      "steps": [
+        "Choose a theme palette",
+        "Add one pickup sound and a visible score change",
+        "Test with sound muted"
+      ],
+      "recall": "Can the player still understand the result?",
+      "hint": "Use properly licensed or original assets.",
+      "challenge": "Add a volume control.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-20",
+      "path": "dev",
+      "day": 20,
+      "title": "Design your own collector",
+      "concept": "Scope keeps an original project finishable.",
+      "steps": [
+        "Write player, action, goal and hazard",
+        "Draw one small level",
+        "List must-have and optional features"
+      ],
+      "recall": "What is the smallest complete version?",
+      "hint": "Keep one level and one main action.",
+      "challenge": "Choose a theme variant.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-21",
+      "path": "dev",
+      "day": 21,
+      "title": "Build the core",
+      "concept": "Build the playable action before polish.",
+      "steps": [
+        "Start your own project or adapt your checkpoint",
+        "Implement movement and one pickup",
+        "Play the core loop"
+      ],
+      "recall": "Is it playable yet?",
+      "hint": "Use what you already understand.",
+      "challenge": "Explain your script without reading it verbatim.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-22",
+      "path": "dev",
+      "day": 22,
+      "title": "Build the level",
+      "concept": "A level arranges reusable rules in space.",
+      "steps": [
+        "Place five pickups",
+        "Add safe boundaries",
+        "Test every area is reachable"
+      ],
+      "recall": "Can the player reach every item?",
+      "hint": "Avoid unreachable corners.",
+      "challenge": "Use an array to organize objects.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-23",
+      "path": "dev",
+      "day": 23,
+      "title": "Add a fair challenge",
+      "concept": "Difficulty should come from understandable rules.",
+      "steps": [
+        "Place one hazard",
+        "Test a safe route",
+        "Tune player speed and hit areas"
+      ],
+      "recall": "Does losing feel fair?",
+      "hint": "Ask a new player before adding more hazards.",
+      "challenge": "Add one moving hazard if time allows.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-24",
+      "path": "dev",
+      "day": 24,
+      "title": "Finish the round",
+      "concept": "Win, lose and replay turn a prototype into a game.",
+      "steps": [
+        "Add your win condition",
+        "Add your lose condition",
+        "Test restart from both endings"
+      ],
+      "recall": "Does the second round work?",
+      "hint": "Many bugs appear only after restart.",
+      "challenge": "Test repeated rapid inputs.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-25",
+      "path": "dev",
+      "day": 25,
+      "title": "Controller-friendly UI",
+      "concept": "A handheld game must be usable without a mouse.",
+      "steps": [
+        "Check Input Map controller bindings",
+        "Make menu buttons focusable",
+        "Test navigating and starting with the controller"
+      ],
+      "recall": "Where did you still need a mouse?",
+      "hint": "Use ui_accept and focus neighbors for buttons.",
+      "challenge": "Add an on-screen control diagram.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-26",
+      "path": "dev",
+      "day": 26,
+      "title": "Catch-up and scope cut",
+      "concept": "Removing unfinished extras can save a release.",
+      "steps": [
+        "Choose the biggest missing essential",
+        "Fix it",
+        "Remove an optional feature that is still broken"
+      ],
+      "recall": "What can you finish today?",
+      "hint": "One polished level is enough.",
+      "challenge": "Make a short bug list.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-27",
+      "path": "dev",
+      "day": 27,
+      "title": "Playtest on real hardware",
+      "concept": "Computer success does not guarantee handheld usability.",
+      "steps": [
+        "Run on computer",
+        "Run on Retroid with a parent",
+        "Record controls, text readability and performance"
+      ],
+      "recall": "What changed on the handheld?",
+      "hint": "Observe a new player without coaching.",
+      "challenge": "Test sound off and pause/resume.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-28",
+      "path": "dev",
+      "day": 28,
+      "title": "Fix the biggest bugs",
+      "concept": "Prioritize crashes and broken rules before decoration.",
+      "steps": [
+        "Fix the most serious issue",
+        "Retest win, lose and replay",
+        "Check another player can start alone"
+      ],
+      "recall": "Which fix mattered most?",
+      "hint": "Keep a known-good backup.",
+      "challenge": "Measure performance if needed.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-29",
+      "path": "dev",
+      "day": 29,
+      "title": "Release checklist",
+      "concept": "Source files and exports serve different purposes.",
+      "steps": [
+        "Save and back up the source project",
+        "Export a working APK for the Retroid test device",
+        "Write controls and known limitations"
+      ],
+      "recall": "Which file lets you edit the game later?",
+      "hint": "The APK plays; the Godot project edits.",
+      "challenge": "Keep a desktop build too.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    },
+    {
+      "id": "dev-30",
+      "path": "dev",
+      "day": 30,
+      "title": "Developer showcase",
+      "concept": "Ownership means understanding the game and its code.",
+      "steps": [
+        "Show a finished game",
+        "Explain a function, signal and state",
+        "Make one independent change and rebuild"
+      ],
+      "recall": "What can you build next without AI writing it?",
+      "hint": "A reference guide is allowed; explain your own decisions.",
+      "challenge": "Plan a November feature.",
+      "mode": "godot",
+      "starter": [
+        {
+          "op": "right",
+          "value": 2,
+          "target": 1
+        },
+        {
+          "op": "say",
+          "value": "Hello!",
+          "target": 1
+        }
+      ],
+      "resources": [
+        {
+          "label": "Download Godot",
+          "url": "https://godotengine.org/download/"
+        },
+        {
+          "label": "Godot step by step",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html"
+        },
+        {
+          "label": "First 2D game",
+          "url": "https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html"
+        },
+        {
+          "label": "Android export",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html"
+        },
+        {
+          "label": "Input examples",
+          "url": "https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html"
+        }
+      ]
+    }
+  ]
+}

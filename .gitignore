@@ -1,0 +1,26 @@
+data/
+.env
+__pycache__/
+*.pyc
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+tests/rendered-views.json
+dist/
+*.log
+*.pid
+app.env
+
+# Private hosting handoffs and backups
+/JOHNNY5-DEPLOYMENT.md
+/hosting-infrastructure-brief.md
+.env.*
+!.env.example
+backups/
+*.bak
+*.dump
+*.key
+*.pem
+
+# Separately supplied download; not needed by the hosted site
+/Pixel-Quest-Club-October.html
