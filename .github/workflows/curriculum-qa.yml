@@ -32,7 +32,9 @@ jobs:
         run: node tests/curriculum_browser.cjs
       - name: Install official Scratch engine for isolated tests
         if: always()
-        run: npm install --prefix /tmp/pqc-scratch --no-audit --no-fund scratch-vm scratch-render scratch-storage
+        run: |
+          npm install --prefix /tmp/pqc-scratch --no-audit --no-fund scratch-vm scratch-render scratch-storage
+          npm list --prefix /tmp/pqc-scratch --depth=0 --json > qa-artifacts/scratch-versions.json
       - name: Execute 16 Scratch checkpoints in real Chromium
         if: always()
         run: node tests/scratch_lessons.cjs

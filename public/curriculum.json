@@ -6405,7 +6405,7 @@
           }
         ]
       },
-      "reference": "var speed: float = 3.0\n# A variable gives a value a name.\nspeed = 6.0"
+      "reference": "extends Node\nvar speed: float = 3.0\n\nfunc _ready():\n    speed = 6.0\n    print(speed)"
     },
     {
       "id": "dev-3",
@@ -6543,7 +6543,7 @@
           }
         ]
       },
-      "reference": "func greet():\n    print(\"Hello!\")\n\n# Call greet() from _ready() to run it.\nfunc _ready():\n    greet()\n    greet()"
+      "reference": "extends Node\n\nfunc greet():\n    print(\"Hello!\")\n\n# Call greet() from _ready() to run it.\nfunc _ready():\n    greet()\n    greet()"
     },
     {
       "id": "dev-4",
@@ -6804,7 +6804,7 @@
           }
         ]
       },
-      "reference": "func _ready():\n    for step in range(3):\n        print(step)\n# This prints 0, 1, 2."
+      "reference": "extends Node\n\nfunc _ready():\n    for step in range(3):\n        print(step)\n# This prints 0, 1, 2."
     },
     {
       "id": "dev-6",

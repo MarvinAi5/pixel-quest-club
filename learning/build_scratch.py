@@ -51,7 +51,7 @@ def project(day):
   for name in ('Win','Lose'):
    B.script(B.add('event_whenbroadcastreceived',{'BROADCAST_OPTION':[name,name]}),B.set('playing',0))
  targets.append(target('Stage',B,stage=True,color='#fff9ed',size=480))
- B=Blocks();goto=B.add('motion_gotoxy',inputs={'X':B.val(-150),'Y':B.val(0)});start=[B.hat(),goto]
+ B=Blocks();goto=B.add('motion_gotoxy',inputs={'X':B.val(-150),'Y':B.val(0)});start=[B.hat(),goto,B.say('Arrows: collect 5 treasures; avoid orange. Green flag replays.' if day>=25 else '')]
  if day>=17:
   moves=[]
   for key,axis,n in [('right arrow','x',4),('left arrow','x',-4),('up arrow','y',4),('down arrow','y',-4)]:
@@ -66,7 +66,6 @@ def project(day):
   B.script(B.add('event_whenbroadcastreceived',{'BROADCAST_OPTION':['Win','Win']}),B.say('You win! Green flag to replay.'))
  if day>=23:
   B.script(B.add('event_whenbroadcastreceived',{'BROADCAST_OPTION':['Lose','Lose']}),B.say('Try another route! Green flag to replay.'))
- if day>=25:B.script(B.hat(),B.say('Arrows: collect 5 treasures; avoid the orange hazard. Green flag replays.'))
  targets.append(target('Player',B,x=-150))
  if day>=18:
   positions=[(-80,0)] if day<22 else [(-80,0),(0,0),(80,0),(160,0),(200,80)]
@@ -79,7 +78,7 @@ def project(day):
    seq+=[B.add('looks_hide')];B.script(*seq);targets.append(target('Treasure'+str(i),B,x=x,y=y,color='#ffbf42',size=20))
  if day>=23:
   B=Blocks();B.script(B.hat(),B.wait(B.touching('Player')),B.broadcast('Lose'));targets.append(target('Hazard',B,x=0,y=-100,color='#bc581d',size=40))
- return dict(targets=targets,monitors=[],extensions=[],meta={'semver':'3.0.0','vm':'scratch-vm','agent':'Pixel Quest Club educational reference'}),assets
+ return dict(targets=targets,monitors=[],extensions=[],meta={'semver':'3.0.0','vm':'5.0.0','agent':'Pixel Quest Club educational reference'}),assets
 
 def build(output=None):
  out=Path(output) if output else ROOT/'public';out.mkdir(parents=True,exist_ok=True)

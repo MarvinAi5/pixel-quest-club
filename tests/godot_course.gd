@@ -19,6 +19,24 @@ func fresh(d: int):
     await frames()
     return game
 func run_course() -> void:
+    # Compile and execute the real GDScript comparisons promised on browser days.
+    for d in [2, 3, 5]:
+        day = d
+        var data = JSON.parse_string(FileAccess.get_file_as_string(ProjectSettings.globalize_path("res://").path_join("../public/curriculum.json")))
+        for lesson in data.lessons:
+            if lesson.id == "dev-%s" % d:
+                var script := GDScript.new()
+                script.source_code = lesson.reference
+                verify(script.reload() == OK, "GDScript comparison compiles")
+                var node = Node.new()
+                node.set_script(script)
+                root.add_child(node)
+                await frames()
+                if d == 2:
+                    verify(node.speed == 6.0, "GDScript variable changes to 6")
+                node.queue_free()
+                await frames()
+                checks.append({"id": "dev-%s" % d, "checks": ["GDScript comparison compiles and executes"], "status": "technical-pattern-passed"})
     for d in range(8, 31):
         day = d
         var game = await fresh(d)
@@ -92,7 +110,7 @@ func run_course() -> void:
         checks.append(item)
         print("PASS Godot dev-%s" % d)
     var output := {"status": "passed" if failures.is_empty() else "failed", "engine": Engine.get_version_info(), "lessons": checks, "failures": failures, "limits": "Headless desktop engine tests; no actual Retroid, controller or human playtest."}
-    var file = FileAccess.open("res://../qa-artifacts/godot-results.json", FileAccess.WRITE)
+    var file = FileAccess.open(ProjectSettings.globalize_path("res://").path_join("../qa-artifacts/godot-results.json"), FileAccess.WRITE)
     file.store_string(JSON.stringify(output, "  "))
     for failure in failures:
         push_error(failure)
