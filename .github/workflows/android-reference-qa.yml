@@ -19,6 +19,7 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+      - uses: android-actions/setup-android@v3
       - name: Prepare disposable Godot and Android templates
         run: |
           python3 learning/build_godot.py

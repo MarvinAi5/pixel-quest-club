@@ -52,6 +52,11 @@ jobs:
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot-reference --editor --import --quit 2>&1 | tee qa-artifacts/godot-import.log
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot-reference --script CourseTest.gd 2>&1 | tee qa-artifacts/godot-run.log
           python3 -c "import json; assert json.load(open('qa-artifacts/godot-results.json'))['status']=='passed'"
+      - name: Capture actual Godot game visuals
+        if: success()
+        run: |
+          cp tests/godot_visual.gd godot-reference/VisualCheck.gd
+          xvfb-run -a /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --path godot-reference --script VisualCheck.gd
       - uses: actions/upload-artifact@v4
         if: always()
         with:
