@@ -20,8 +20,9 @@ function setup(){
  // Successful save clears the pending draft and advances its revision.
  t=setup();t.run(`user={id:'child-a',role:'child'};state.path='story';dirty=true;api=async()=>({revision:1});`);await t.run('saveOnline()');draft=JSON.parse(t.storage.get('pqc-child-a'));assert.equal(draft.revision,1);assert(!draft.dirty);
  t=setup();await t.run(`handleAction('path','story')`);t.run(`project().title='My own game';project().scenes[0].code='say "My words"';`);await t.run(`handleAction('theme','space')`);assert.equal(t.run('project().title'),'My own game');assert.equal(t.run('project().scenes[0].code'),'say "My words"');
- for(const op of t.context.PQC.OPS){await t.run(`handleAction('add-block',${JSON.stringify(op)})`);}assert.equal(t.run('project().scenes[0].program.length'),15);assert(t.run('PQC.validateProject(project())'));
- await t.run(`handleAction('later',null,{dataset:{index:'0'}})`);await t.run(`handleAction('earlier',null,{dataset:{index:'1'}})`);await t.run(`handleAction('remove-block',null,{dataset:{index:'0'}})`);assert.equal(t.run('project().scenes[0].program.length'),14);
+ assert.equal(t.run('project().scenes[0].program.length'),0);
+ for(const op of t.context.PQC.OPS){await t.run(`handleAction('add-block',${JSON.stringify(op)})`);}assert.equal(t.run('project().scenes[0].program.length'),13);assert(t.run('PQC.validateProject(project())'));
+ await t.run(`handleAction('later',null,{dataset:{index:'0'}})`);await t.run(`handleAction('earlier',null,{dataset:{index:'1'}})`);await t.run(`handleAction('remove-block',null,{dataset:{index:'0'}})`);assert.equal(t.run('project().scenes[0].program.length'),12);
  await t.run(`handleAction('path','game')`);await t.run(`handleAction('path','story')`);assert.equal(t.run('project().title'),'My own game');
  for(const path of ['story','game','dev'])for(let day=1;day<=30;day++){t.run(`state.path=${JSON.stringify(path)};activeDay=${day};`);await t.run(`handleAction('starter')`);assert(t.run('PQC.validateProject(project())'));}
  console.log('State/actions: draft recovery/conflicts, save acknowledgement, path/theme preservation, all 13 block additions, reorder/delete and 90 starter applications passed (simulated DOM).');
