@@ -1,7 +1,7 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert'),path=require('path');
 const root=path.join(__dirname,'..');
 const fakeContext=new Proxy({measureText:s=>({width:s.length*9})},{get:(obj,p)=>obj[p]||(()=>{})});
-const context={window:{},Image:class{constructor(){this.complete=true;this.naturalWidth=1536;}addEventListener(){}},performance,requestAnimationFrame:fn=>setTimeout(()=>fn(performance.now()),2),setTimeout,console};context.window=context.window;vm.createContext(context);vm.runInContext(fs.readFileSync(root+'/public/engine.js','utf8'),context);const P=context.window.PQC;
+const context={window:{},Image:class{constructor(){this.complete=true;this.naturalWidth=1536;}addEventListener(){}removeEventListener(){}},performance,requestAnimationFrame:fn=>setTimeout(()=>fn(performance.now()),2),setTimeout,console};context.window=context.window;vm.createContext(context);vm.runInContext(fs.readFileSync(root+'/public/engine.js','utf8'),context);const P=context.window.PQC;
 const copy=x=>JSON.parse(JSON.stringify(x));
 (async()=>{
  assert.equal(P.parseCode('move right 2\nrepeat 3 up 1\nsay "Hello"').commands.length,3);

@@ -41,14 +41,14 @@ function parseCode(text){
  return {commands,speed,target};
 }
 class Stage {
- constructor(canvas,project,notify){this.canvas=canvas;this.ctx=canvas.getContext('2d');canvas.width=800;canvas.height=450;this.project=project;this.notify=notify;this.token=0;this.score=0;this.running=false;this.lost=false;this.won=false;this.layout=null;this.runtime=null;this.reset();this.frame=null;this.pendingFrame=false;this.draw=this.draw.bind(this);this.canvas.addEventListener('pointerdown',e=>this.pointer(e));image('assets/avatars.webp').addEventListener('load',()=>this.paint());this.paint();}
+ constructor(canvas,project,notify){this.canvas=canvas;this.ctx=canvas.getContext('2d');canvas.width=800;canvas.height=450;this.project=project;this.notify=notify;this.token=0;this.score=0;this.running=false;this.lost=false;this.won=false;this.layout=null;this.runtime=null;this.reset();this.frame=null;this.pendingFrame=false;this.draw=this.draw.bind(this);this.canvas.addEventListener('pointerdown',e=>this.pointer(e));this.avatarImage=image('assets/avatars.webp');this.onAvatarLoad=()=>this.paint();if(!this.avatarImage.complete)this.avatarImage.addEventListener('load',this.onAvatarLoad,{once:true});this.paint();}
  current(){return this.project.scenes[this.project.scene];}
  reset(){this.stop();this.score=0;this.lost=false;this.won=false;this.project.scene=Math.min(1,Math.max(0,this.project.scene));this.loadScene();this.report('Ready. Press Run.');this.paint();}
  loadScene(){const s=this.current();this.runtime={players:s.players.map(p=>({...p,visible:true,speech:''})),items:s.items.map(p=>({...p,collected:false})),hazards:s.hazards};}
  report(text,error=false){this.notify?.({text,error,score:this.score,target:this.project.target,scene:this.project.scene,lost:this.lost,won:this.won});}
  paint(){if(!this.pendingFrame){this.pendingFrame=true;requestAnimationFrame(()=>{this.pendingFrame=false;this.draw();});}}
  draw(){
-  if(!this.runtime)return;const ctx=this.ctx,theme=THEMES[this.project.theme],bg=image(theme.file);ctx.clearRect(0,0,800,450);ctx.fillStyle='#bddde2';ctx.fillRect(0,0,800,450);if(bg.complete&&bg.naturalWidth)ctx.drawImage(bg,0,0,800,450);else bg.onload=()=>this.paint();
+  if(!this.runtime)return;const ctx=this.ctx,theme=THEMES[this.project.theme],bg=image(theme.file);ctx.clearRect(0,0,800,450);ctx.fillStyle='#bddde2';ctx.fillRect(0,0,800,450);if(bg.complete&&bg.naturalWidth)ctx.drawImage(bg,0,0,800,450);else bg.onload=()=>{bg.onload=null;this.paint();};
   ctx.fillStyle='#18223b25';ctx.fillRect(0,285,800,165);
   ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='40px system-ui';for(const p of this.runtime.items)if(!p.collected)ctx.fillText(theme.item,p.x,p.y);for(const h of this.runtime.hazards)ctx.fillText(theme.hazard,h.x,h.y);
   const atlas=image('assets/avatars.webp');this.runtime.players.forEach((p,i)=>{
@@ -83,7 +83,7 @@ class Stage {
   const p=this.runtime.players[0];if(this.running&&this.armed&&this.current().trigger==='tap'&&!this.busy&&Math.hypot(p.x-x,p.y-y)<50){this.busy=true;this.executeScene(this.token,0).catch(err=>this.report(err.message,true)).finally(()=>this.busy=false);}
  }
  beep(){if(!this.project.sound)return;try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;this.audio??=new AC();if(this.audio.state==='suspended')this.audio.resume();const o=this.audio.createOscillator(),g=this.audio.createGain();o.connect(g);g.connect(this.audio.destination);o.frequency.value=660;g.gain.setValueAtTime(.06,this.audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,this.audio.currentTime+.12);o.start();o.stop(this.audio.currentTime+.13);}catch{}}
- destroy(){this.stop();this.audio?.close();}
+ destroy(){this.stop();this.avatarImage?.removeEventListener('load',this.onAvatarLoad);this.audio?.close();}
 }
 global.PQC={THEMES,Stage,avatarStyle,defaultProject,validateProject,parseCode,OPS};
 })(window);

@@ -5545,11 +5545,11 @@
       ],
       "success": "Treasure hides once on contact and returns when the green flag is pressed.",
       "walkthrough": [
-        "Add a Treasure sprite. Position it near Player. Use one wait-until pickup stack rather than a forever loop that could keep responding after the sprite hides. Select the actual Player name in touching.",
+        "Add a Treasure sprite. Position it near Player. Wait 0.1 seconds after show so the player and score can reset before collision checks. Use one wait-until pickup stack rather than a forever loop that could keep responding after the sprite hides. Select the actual Player name in touching.",
         "Use the recipe below with the named sprites. It describes blocks to assemble; it is not code to paste.",
         "The optional .sb3 checkpoint is for comparing a working pattern. Build and change your own version."
       ],
-      "guideCode": "Treasure:\nwhen green flag clicked\nshow\nwait until <touching [Player]?>\nhide",
+      "guideCode": "Treasure:\nwhen green flag clicked\nshow\nwait 0.1 seconds\nwait until <touching [Player]?>\nhide",
       "checkpoint": "scratch-day-18.sb3"
     },
     {
@@ -5599,7 +5599,7 @@
         "Use the recipe below with the named sprites. It describes blocks to assemble; it is not code to paste.",
         "The optional .sb3 checkpoint is for comparing a working pattern. Build and change your own version."
       ],
-      "guideCode": "Stage:\nwhen green flag clicked\nset [score] to 0\n\nTreasure:\nwhen green flag clicked\nshow\nwait until <touching [Player]?>\nchange [score] by 1\nhide",
+      "guideCode": "Stage:\nwhen green flag clicked\nset [score] to 0\n\nTreasure:\nwhen green flag clicked\nshow\nwait 0.1 seconds\nwait until <touching [Player]?>\nchange [score] by 1\nhide",
       "checkpoint": "scratch-day-19.sb3"
     },
     {
@@ -5749,7 +5749,7 @@
         "Use the recipe below with the named sprites. It describes blocks to assemble; it is not code to paste.",
         "The optional .sb3 checkpoint is for comparing a working pattern. Build and change your own version."
       ],
-      "guideCode": "Each of 5 Treasure sprites:\nwhen green flag clicked\nshow\nwait until <touching [Player]?>\nchange [score] by 1\nhide",
+      "guideCode": "Each of 5 Treasure sprites:\nwhen green flag clicked\nshow\nwait 0.1 seconds\nwait until <touching [Player]?>\nchange [score] by 1\nhide",
       "checkpoint": "scratch-day-22.sb3"
     },
     {

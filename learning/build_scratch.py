@@ -70,7 +70,7 @@ def project(day):
  if day>=18:
   positions=[(-80,0)] if day<22 else [(-80,0),(0,0),(80,0),(160,0),(200,80)]
   for i,(x,y) in enumerate(positions,1):
-   B=Blocks();seq=[B.hat(),B.add('looks_show'),B.wait(B.touching('Player'))]
+   B=Blocks();seq=[B.hat(),B.add('looks_show'),B.add('control_wait',inputs={'DURATION':B.val(0.1)}),B.wait(B.touching('Player'))]
    if day>=19:
     change=B.add('data_changevariableby',{'VARIABLE':['score','score']},{'VALUE':B.val(1)})
     if day>=23:change=B.condition(B.eq(B.variable('playing'),1),[change])

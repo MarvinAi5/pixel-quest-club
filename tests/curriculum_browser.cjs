@@ -87,5 +87,7 @@ async function dev(d){
   }
   await click('choose');
  }
+ await page.waitForTimeout(200);
+ const cdp=await page.context().newCDPSession(page);await cdp.send('HeapProfiler.collectGarbage');const proto=await cdp.send('Runtime.evaluate',{expression:'PQC.Stage.prototype',objectGroup:'stage-retention-qa'});const objects=await cdp.send('Runtime.queryObjects',{prototypeObjectId:proto.result.objectId,objectGroup:'stage-retention-qa'});const count=await cdp.send('Runtime.callFunctionOn',{objectId:objects.objects.objectId,functionDeclaration:'function(){return this.length;}',returnByValue:true});report.retainedStagesAfterCalendar=count.result.value;assert(count.result.value<=2,'Old lesson stages are retained in memory: '+count.result.value);await cdp.send('Runtime.releaseObjectGroup',{objectGroup:'stage-retention-qa'});await cdp.detach();
  assert.deepEqual(report.errors,[]);assert.equal(report.lessons.length,90);report.status='passed';
 })().catch(async e=>{report.status='failed';report.failure=e.stack;console.error(e);if(page)await page.screenshot({path:OUT+'/curriculum-failure.png',fullPage:true}).catch(()=>{});process.exitCode=1;}).finally(async()=>{fs.writeFileSync(OUT+'/curriculum-browser-results.json',JSON.stringify(report,null,2));await browser?.close();server.kill();fs.rmSync(dir,{recursive:true,force:true});});
