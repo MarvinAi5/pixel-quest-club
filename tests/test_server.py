@@ -13,7 +13,7 @@ class Client:
 class ClubTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
-  cls.temp=tempfile.TemporaryDirectory();env={**os.environ,'PQC_DATA_DIR':cls.temp.name,'PQC_PARENT_INVITE':'test-family','PQC_OPEN_CHILD_SIGNUP':'0'}
+  cls.temp=tempfile.TemporaryDirectory();env={**os.environ,'PQC_DATA_DIR':cls.temp.name,'PQC_PARENT_INVITE':'test-family','PQC_OPEN_CHILD_SIGNUP':'0','PQC_OWNER_USERNAME':'parent-one','PQC_CF_ZONE_ID':'','PQC_CF_ANALYTICS_TOKEN':''}
   cls.proc=subprocess.Popen([sys.executable,str(ROOT/'server.py'),'--port','8082'],env=env,stdout=subprocess.DEVNULL)
   for _ in range(40):
    try:Client().call('session');break
@@ -32,6 +32,21 @@ class ClubTests(unittest.TestCase):
   self.assertEqual(other.call('delete-child',{'id':kid['id']})[0],404)
   self.assertEqual(child.call('login',{'username':kid['username'],'secret':'123456'})[0],200)
   self.assertEqual(child.call('children')[0],404)
+  self.assertEqual(guest.call('activity',{})[0],401)
+  self.assertEqual(parent.call('activity',{})[0],403)
+  self.assertEqual(child.call('site-traffic')[0],403)
+  self.assertEqual(other.call('site-traffic')[0],403)
+  self.assertEqual(parent.call('site-traffic')[1]['status'],'not-configured')
+  first={'tab':'a'*32,'seq':0,'seconds':0,'lesson':'story-1'}
+  self.assertEqual(child.call('activity',first)[0],200)
+  time.sleep(.02)
+  self.assertEqual(child.call('activity',{**first,'seq':1,'seconds':1})[0],200)
+  self.assertEqual(child.call('activity',{**first,'seq':1,'seconds':1})[1]['credited'],0)
+  self.assertEqual(child.call('activity',{**first,'seq':2,'seconds':999})[0],400)
+  self.assertEqual(other.call('children')[1]['children'],[])
+  summary=parent.call('children')[1]['children'][0]['activity']
+  self.assertEqual(summary['lastLesson'],'story-1')
+  self.assertEqual(summary['periods']['today']['days'],1)
   payload={'schema':1,'completed':{'story-1':True},'projects':{}}
   status,r=child.call('save',{'payload':payload,'revision':0});self.assertEqual(status,200);self.assertEqual(r['revision'],1)
   self.assertEqual(child.call('save',{'payload':payload,'revision':0})[0],409)

@@ -2,7 +2,7 @@ name: Prelaunch website QA
 on:
   push:
     branches: [main]
-    paths: ['public/**', 'server.py', 'build.py', 'tests/**', 'package.json', '.github/workflows/prelaunch-qa.yml']
+    paths: ['public/**', 'server.py', 'activity.py', 'traffic.py', 'build.py', 'tests/**', 'package.json', '.github/workflows/prelaunch-qa.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -27,9 +27,12 @@ jobs:
           node tests/test_engine.cjs
           node tests/test_engine_edges.cjs
           node tests/test_app.cjs
+          node tests/test_activity.cjs
           node tests/test_views.cjs
       - name: Browser controls and responsive screenshots
-        run: npm run qa:browser
+        run: |
+          npm run qa:browser
+          node tests/family_browser.cjs
       - name: Local 100-user load test
         run: python3 tests/load_test.py > qa-artifacts/load-results.json
       - uses: actions/upload-artifact@v4

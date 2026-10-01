@@ -15,7 +15,7 @@ for path in data['paths']:
  assert sorted(l['day'] for l in lessons)==list(range(1,31))
  for l in lessons: assert len(l['steps'])==3 and all(l.get(k) for k in ['concept','hint','challenge','recall'])
 node=os.environ.get('PQC_NODE','node')
-for name in ['app.js','engine.js']:subprocess.run([node,'--check',str(public/name)],check=True)
+for name in ['app.js','engine.js','activity.js']:subprocess.run([node,'--check',str(public/name)],check=True)
 # No output changes until all source checks pass.
 if dist.exists():shutil.rmtree(dist)
 dist.mkdir();mapping={}
@@ -28,7 +28,7 @@ for name in ['starter-godot.zip','favicon.svg']+[p.name for p in public.glob('sc
 for lesson in data['lessons']:
  if lesson.get('checkpoint'):lesson['checkpoint']=mapping[lesson['checkpoint']]
 emit('curriculum.json',json.dumps(data,ensure_ascii=False).encode())
-for name in ['style.css','engine.js','app.js']:
+for name in ['style.css','engine.js','activity.js','app.js']:
  text=(public/name).read_text()
  for before,after in mapping.items():text=re.sub(re.escape(before)+r'(?![A-Za-z0-9_])',lambda _match:after,text)
  emit(name,text.encode())

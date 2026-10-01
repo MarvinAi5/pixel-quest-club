@@ -5,6 +5,8 @@ from contextlib import contextmanager
 from pathlib import Path
 from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 from http.cookies import SimpleCookie
+from zoneinfo import ZoneInfo
+import activity, traffic
 ROOT=Path(__file__).resolve().parent
 PUBLIC=Path(os.environ.get('PQC_PUBLIC_DIR',str(ROOT/'public')))
 DATA=Path(os.environ.get('PQC_DATA_DIR',str(ROOT/'data')))
@@ -13,6 +15,10 @@ SIGNUP=os.environ.get('PQC_OPEN_CHILD_SIGNUP','0')=='1'
 PARENT_SIGNUP=os.environ.get('PQC_PARENT_SIGNUP','1')=='1'
 INVITE=os.environ.get('PQC_PARENT_INVITE','')
 MAX_ACCOUNTS=int(os.environ.get('PQC_MAX_ACCOUNTS','250'))
+ACTIVITY_TZ=ZoneInfo(os.environ.get('PQC_TIMEZONE','America/Denver'))
+OWNER=os.environ.get('PQC_OWNER_USERNAME','').lower()
+CF_ZONE=os.environ.get('PQC_CF_ZONE_ID','')
+CF_TOKEN=os.environ.get('PQC_CF_ANALYTICS_TOKEN','')
 LOCK=threading.Lock(); ATTEMPTS={}
 @contextmanager
 def db():
@@ -28,6 +34,7 @@ def init():
   c.executescript('''CREATE TABLE IF NOT EXISTS users(id TEXT PRIMARY KEY,username TEXT UNIQUE NOT NULL,role TEXT NOT NULL,parent_id TEXT REFERENCES users(id),secret TEXT NOT NULL,recovery TEXT NOT NULL,avatar INTEGER NOT NULL DEFAULT 0,path TEXT NOT NULL DEFAULT 'story',theme TEXT NOT NULL DEFAULT 'royal',created REAL NOT NULL,last_seen REAL NOT NULL);
 CREATE TABLE IF NOT EXISTS sessions(token TEXT PRIMARY KEY,user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,expires REAL NOT NULL);
 CREATE TABLE IF NOT EXISTS saves(user_id TEXT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,payload TEXT NOT NULL,revision INTEGER NOT NULL DEFAULT 0,updated REAL NOT NULL);''')
+  c.executescript(activity.SCHEMA)
 def digest(secret):
  salt=secrets.token_hex(16);return salt+':'+hashlib.pbkdf2_hmac('sha256',secret.encode(),salt.encode(),200000).hex()
 def verify(secret,stored):
@@ -42,7 +49,10 @@ def throttle(key,limit=10,window=600):
   a=[x for x in ATTEMPTS.get(key,[]) if x>now-window]
   if len(a)>=limit:return False
   a.append(now);ATTEMPTS[key]=a;return True
-def public_user(u):return {k:u[k] for k in ['id','username','role','avatar','path','theme','parent_id']}
+def public_user(u):
+ result={k:u[k] for k in ['id','username','role','avatar','path','theme','parent_id']}
+ result['owner']=bool(OWNER and u['role']=='parent' and u['username']==OWNER)
+ return result
 def create_user(role,secret,parent=None,username=None,avatar=0,path='story',theme='royal'):
  now=time.time();uid=secrets.token_hex(12);recovery=secrets.token_urlsafe(24)
  if username is None:
@@ -117,7 +127,14 @@ class Handler(SimpleHTTPRequestHandler):
    if path=='/api/children' and u['role']=='parent':
     with db() as c:
      rows=c.execute('SELECT users.*,saves.payload FROM users LEFT JOIN saves ON users.id=saves.user_id WHERE parent_id=?',(u['id'],)).fetchall()
-    return self.reply(200,dict(children=[dict(**public_user(r),progress=json.loads(r['payload']).get('completed',{}) if r['payload'] else {}) for r in rows]))
+     children=[]
+     for r in rows:
+      saved=json.loads(r['payload']) if r['payload'] else {}
+      children.append(dict(**{**public_user(r),'path':saved.get('path') or r['path']},progress=saved.get('completed',{}),lastDays=saved.get('lastDays',{}),activity=activity.summary(c,r['id'],time.time(),ACTIVITY_TZ)))
+    return self.reply(200,dict(children=children,timezone=str(ACTIVITY_TZ)))
+   if path=='/api/site-traffic':
+    if not public_user(u)['owner']:return self.reply(403,dict(error='Site traffic is available only to the owner.'))
+    return self.reply(200,traffic.report(CF_ZONE,CF_TOKEN))
    return self.reply(404,dict(error='Not found.'))
   if '..' in urllib.parse.unquote(path).split('/'):return self.reply(404,dict(error='Not found.'))
   return super().do_GET()
@@ -167,6 +184,10 @@ class Handler(SimpleHTTPRequestHandler):
     cookie=SimpleCookie(self.headers.get('Cookie',''));token=cookie['pqc_session'].value if 'pqc_session' in cookie else ''
     with db() as c:c.execute('DELETE FROM sessions WHERE token=?',(hashlib.sha256(token.encode()).hexdigest(),))
     return self.reply(200,dict(ok=True),self.cookie())
+   if path=='/api/activity':
+    if u['role']!='child' or not u['parent_id']:return self.reply(403,dict(error='Activity summaries are for linked child accounts.'))
+    with db() as c:credited=activity.record(c,u['id'],b,time.time(),ACTIVITY_TZ)
+    return self.reply(200,dict(credited=credited))
    if path=='/api/save':
     payload=b.get('payload');revision=b.get('revision',0)
     if not isinstance(payload,dict) or not isinstance(revision,int):raise ValueError('Invalid draft.')
