@@ -17,7 +17,7 @@ async function call(context,path,body){const r=body===undefined?await context.re
  await childPage.evaluate(()=>window.familyPackets=[]);
  await childPage.route('**/api/activity',async route=>{await childPage.evaluate(body=>window.familyPackets.push(body),route.request().postDataJSON());await route.continue();});
  await childPage.waitForFunction(()=>window.familyPackets.length>=2,null,{timeout:40000});
- const actual=(await call(owner,'children')).children[0];assert(actual.activity.periods.today.seconds>=10);assert.equal(actual.activity.lastLesson,'story-1');
+ let actual;for(let attempt=0;attempt<20;attempt++){actual=(await call(owner,'children')).children[0];if(actual.activity.periods.today.seconds>=10)break;await new Promise(r=>setTimeout(r,100));}report.collectorPackets=await childPage.evaluate(()=>window.familyPackets);report.measuredActivity=actual.activity;assert(actual.activity.periods.today.seconds>=10);assert.equal(actual.activity.lastLesson,'story-1');
  report.checks.push('Real browser visible lesson collector and server time accumulation');
  for(let i=0;i<3;i++)await childPage.locator('#step-'+i).check();await childPage.locator('#explained').check();await childPage.locator('#complete').click();await childPage.locator('[data-action="save-now"]').click();await childPage.waitForFunction(()=>document.querySelector('#save-status').textContent==='Saved online');
  // Add explicit fixture days for readable multi-day period UI; not measured learner activity.
