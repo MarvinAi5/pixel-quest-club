@@ -1,11 +1,11 @@
 /* A bounded interpreter, never eval: children's commands cannot access the page or server. */
 (function(global){
 'use strict';
-const AVATAR_X=[160,405,650,895,1140,1390],AVATAR_Y=[208,387,572,749,926];
+const AVATAR_X=[160,405,650,895,1140,1390],AVATAR_Y=[208,387,572,749,926],AVATAR_CROP=170;
 const THEMES={royal:{name:'Royal Castle',file:'assets/royal.webp',fallback:'assets/royal.jpg',item:'💎',hazard:'🌿',player:13,friend:12,treasure:'gems'},space:{name:'Space Adventure',file:'assets/space.webp',fallback:'assets/space.jpg',item:'⚡',hazard:'☄',player:21,friend:19,treasure:'crystals'},halloween:{name:'Halloween',file:'assets/halloween.webp',fallback:'assets/halloween.jpg',item:'🎃',hazard:'🕸',player:24,friend:27,treasure:'pumpkins'}};
 const images={};
 function image(src){if(!images[src]){images[src]=new Image();images[src].src=(global.PQC_ASSETS&&global.PQC_ASSETS[src])||src;}return images[src];}
-function avatarStyle(index,size=80){const x=AVATAR_X[index%6],y=AVATAR_Y[Math.floor(index/6)],scale=size/200;return `background-size:${1536*scale}px ${1024*scale}px;background-position:${-(x-100)*scale}px ${-(y-100)*scale}px;`;}
+function avatarStyle(index,size=80){const x=AVATAR_X[index%6],y=AVATAR_Y[Math.floor(index/6)],scale=size/AVATAR_CROP;return `background-size:${1536*scale}px ${1024*scale}px;background-position:${-(x-AVATAR_CROP/2)*scale}px ${-(y-AVATAR_CROP/2)*scale}px;`;}
 function defaultScene(){return {trigger:'start',program:[{op:'right',value:2,target:1},{op:'say',value:'Hello!',target:1}],code:'move right 2\nsay "Hello!"',players:[{x:110,y:345,avatar:null},{x:650,y:345,avatar:null}],items:[{x:230,y:345},{x:350,y:345},{x:470,y:345}],hazards:[]};}
 function defaultProject(theme='royal'){return {schema:1,title:'My October creation',theme,mode:'blocks',target:3,speed:3,sound:true,scene:0,scenes:[defaultScene(),{...defaultScene(),program:[{op:'say',value:'The end!',target:1}],code:'say "The end!"'}]};}
 const OPS=['right','left','up','down','wait','say','repeat','sound','hide','show','next','message','ifwin'];
@@ -67,7 +67,7 @@ class Stage {
   ctx.fillStyle='#18223b25';ctx.fillRect(0,285,800,165);
   ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='40px system-ui';for(const p of this.runtime.items)if(!p.collected)ctx.fillText(theme.item,p.x,p.y);for(const h of this.runtime.hazards)ctx.fillText(theme.hazard,h.x,h.y);
   const atlas=image('assets/avatars.webp');this.runtime.players.forEach((p,i)=>{
-   if(!p.visible)return;const av=p.avatar??(i===0?theme.player:theme.friend),cx=AVATAR_X[av%6],cy=AVATAR_Y[Math.floor(av/6)];ctx.save();ctx.beginPath();ctx.arc(p.x,p.y,35,0,Math.PI*2);ctx.clip();if(atlas.complete&&atlas.naturalWidth)ctx.drawImage(atlas,cx-100,cy-100,200,200,p.x-35,p.y-35,70,70);ctx.restore();
+   if(!p.visible)return;const av=p.avatar??(i===0?theme.player:theme.friend),cx=AVATAR_X[av%6],cy=AVATAR_Y[Math.floor(av/6)];ctx.save();ctx.beginPath();ctx.arc(p.x,p.y,35,0,Math.PI*2);ctx.clip();if(atlas.complete&&atlas.naturalWidth)ctx.drawImage(atlas,cx-AVATAR_CROP/2,cy-AVATAR_CROP/2,AVATAR_CROP,AVATAR_CROP,p.x-35,p.y-35,70,70);ctx.restore();
    if(p.speech){const lines=this.wrap(p.speech,210),w=230,h=lines.length*24+20,x=Math.min(565,Math.max(5,p.x-w/2)),y=Math.max(8,p.y-65-h);ctx.fillStyle='#fffdf5';ctx.strokeStyle='#18223b';ctx.lineWidth=2;ctx.beginPath();ctx.roundRect?ctx.roundRect(x,y,w,h,12):ctx.rect(x,y,w,h);ctx.fill();ctx.stroke();ctx.fillStyle='#18223b';ctx.font='20px Trebuchet MS';lines.forEach((line,j)=>ctx.fillText(line,x+w/2,y+22+j*24));}
   });
   if(this.won||this.lost){ctx.fillStyle=this.won?'#e8fff0ed':'#fff0d3ed';ctx.fillRect(200,15,400,52);ctx.fillStyle='#18223b';ctx.font='bold 24px Trebuchet MS';ctx.fillText(this.won?'Goal reached!':'Try another route',400,42);}
