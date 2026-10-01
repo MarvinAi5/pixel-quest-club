@@ -2,7 +2,7 @@
 (function(global){
 'use strict';
 const AVATAR_X=[160,405,650,895,1140,1390],AVATAR_Y=[208,387,572,749,926];
-const THEMES={royal:{name:'Royal Castle',file:'assets/royal.webp',item:'💎',hazard:'🌿',player:13,friend:12,treasure:'gems'},space:{name:'Space Adventure',file:'assets/space.webp',item:'⚡',hazard:'☄',player:21,friend:19,treasure:'crystals'},halloween:{name:'Halloween',file:'assets/halloween.webp',item:'🎃',hazard:'🕸',player:24,friend:27,treasure:'pumpkins'}};
+const THEMES={royal:{name:'Royal Castle',file:'assets/royal.webp',fallback:'assets/royal.jpg',item:'💎',hazard:'🌿',player:13,friend:12,treasure:'gems'},space:{name:'Space Adventure',file:'assets/space.webp',fallback:'assets/space.jpg',item:'⚡',hazard:'☄',player:21,friend:19,treasure:'crystals'},halloween:{name:'Halloween',file:'assets/halloween.webp',fallback:'assets/halloween.jpg',item:'🎃',hazard:'🕸',player:24,friend:27,treasure:'pumpkins'}};
 const images={};
 function image(src){if(!images[src]){images[src]=new Image();images[src].src=(global.PQC_ASSETS&&global.PQC_ASSETS[src])||src;}return images[src];}
 function avatarStyle(index,size=80){const x=AVATAR_X[index%6],y=AVATAR_Y[Math.floor(index/6)],scale=size/200;return `background-size:${1536*scale}px ${1024*scale}px;background-position:${-(x-100)*scale}px ${-(y-100)*scale}px;`;}
@@ -46,9 +46,24 @@ class Stage {
  reset(){this.stop();this.score=0;this.lost=false;this.won=false;this.project.scene=Math.min(1,Math.max(0,this.project.scene));this.loadScene();this.report('Ready. Press Run.');this.paint();}
  loadScene(){const s=this.current();this.runtime={players:s.players.map(p=>({...p,visible:true,speech:''})),items:s.items.map(p=>({...p,collected:false})),hazards:s.hazards};}
  report(text,error=false){this.notify?.({text,error,score:this.score,target:this.project.target,scene:this.project.scene,lost:this.lost,won:this.won});}
- paint(){if(!this.pendingFrame){this.pendingFrame=true;requestAnimationFrame(()=>{this.pendingFrame=false;this.draw();});}}
+ paint(){if(this.destroyed)return;if(!this.pendingFrame){this.pendingFrame=true;requestAnimationFrame(()=>{this.pendingFrame=false;this.draw();});}}
+ clearBackgroundListeners(){if(this.backgroundImage){this.backgroundImage.removeEventListener('load',this.backgroundLoaded);this.backgroundImage.removeEventListener('error',this.backgroundFailed);}}
+ background(){
+  const theme=THEMES[this.project.theme];
+  if(this.backgroundTheme!==this.project.theme){this.clearBackgroundListeners();this.backgroundTheme=this.project.theme;this.loadBackgroundImage(theme.file,false);}
+  return this.backgroundImage;
+ }
+ loadBackgroundImage(src,fallback){
+  this.clearBackgroundListeners();this.backgroundImage=image(src);this.backgroundState='loading';this.onBackground?.('Loading scene background…',false);
+  this.backgroundLoaded=()=>{if(this.destroyed)return;this.clearBackgroundListeners();this.backgroundState=fallback?'fallback':'ready';this.onBackground?.('Background loaded.',false);this.paint();};
+  this.backgroundFailed=()=>{if(this.destroyed)return;this.clearBackgroundListeners();if(!fallback){this.loadBackgroundImage(THEMES[this.project.theme].fallback,true);this.paint();}else{this.backgroundState='error';this.onBackground?.('Background did not load. Try Reload background.',true);}};
+  if(this.backgroundImage.complete&&this.backgroundImage.naturalWidth)this.backgroundLoaded();
+  else if(this.backgroundImage.complete)this.backgroundFailed();
+  else{this.backgroundImage.addEventListener('load',this.backgroundLoaded,{once:true});this.backgroundImage.addEventListener('error',this.backgroundFailed,{once:true});}
+ }
+ retryBackground(){const theme=THEMES[this.project.theme];this.clearBackgroundListeners();delete images[theme.file];delete images[theme.fallback];this.backgroundTheme=null;this.paint();}
  draw(){
-  if(!this.runtime)return;const ctx=this.ctx,theme=THEMES[this.project.theme],bg=image(theme.file);ctx.clearRect(0,0,800,450);ctx.fillStyle='#bddde2';ctx.fillRect(0,0,800,450);if(bg.complete&&bg.naturalWidth)ctx.drawImage(bg,0,0,800,450);else bg.onload=()=>{bg.onload=null;this.paint();};
+  if(!this.runtime||this.destroyed)return;const ctx=this.ctx,theme=THEMES[this.project.theme],bg=this.background();ctx.clearRect(0,0,800,450);ctx.fillStyle='#bddde2';ctx.fillRect(0,0,800,450);if(bg?.complete&&bg.naturalWidth)ctx.drawImage(bg,0,0,800,450);
   ctx.fillStyle='#18223b25';ctx.fillRect(0,285,800,165);
   ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='40px system-ui';for(const p of this.runtime.items)if(!p.collected)ctx.fillText(theme.item,p.x,p.y);for(const h of this.runtime.hazards)ctx.fillText(theme.hazard,h.x,h.y);
   const atlas=image('assets/avatars.webp');this.runtime.players.forEach((p,i)=>{
@@ -83,7 +98,7 @@ class Stage {
   const p=this.runtime.players[0];if(this.running&&this.armed&&this.current().trigger==='tap'&&!this.busy&&Math.hypot(p.x-x,p.y-y)<50){this.busy=true;this.executeScene(this.token,0).catch(err=>this.report(err.message,true)).finally(()=>this.busy=false);}
  }
  beep(){if(!this.project.sound)return;try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;this.audio??=new AC();if(this.audio.state==='suspended')this.audio.resume();const o=this.audio.createOscillator(),g=this.audio.createGain();o.connect(g);g.connect(this.audio.destination);o.frequency.value=660;g.gain.setValueAtTime(.06,this.audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,this.audio.currentTime+.12);o.start();o.stop(this.audio.currentTime+.13);}catch{}}
- destroy(){this.stop();this.avatarImage?.removeEventListener('load',this.onAvatarLoad);this.audio?.close();}
+ destroy(){this.destroyed=true;this.clearBackgroundListeners();this.stop();this.avatarImage?.removeEventListener('load',this.onAvatarLoad);this.audio?.close();}
 }
 global.PQC={THEMES,Stage,avatarStyle,defaultProject,validateProject,parseCode,OPS};
 })(window);

@@ -22,10 +22,12 @@ class ClubTests(unittest.TestCase):
  def tearDownClass(cls):cls.proc.terminate();cls.proc.wait();cls.temp.cleanup()
  def test_accounts_isolation_recovery_and_save_conflict(self):
   parent=Client();other=Client();guest=Client();child=Client()
+  self.assertEqual(guest.call('session')[1]['sessionState'],'missing-cookie')
   self.assertEqual(guest.call('save')[0],401)
   self.assertEqual(guest.call('register',{'role':'child','secret':'123456'})[0],403)
   self.assertEqual(parent.call('register',{'role':'parent','username':'parent-one','secret':'test-password-123','invite':'wrong'})[0],403)
   status,p=parent.call('register',{'role':'parent','username':'parent-one','secret':'test-password-123','invite':'test-family'});self.assertEqual(status,201)
+  self.assertEqual(parent.call('session')[1]['sessionState'],'verified')
   status,o=other.call('register',{'role':'parent','username':'parent-two','secret':'test-password-456','invite':'test-family'});self.assertEqual(status,201)
   status,k=parent.call('children',{'secret':'123456','avatar':13,'path':'story','theme':'royal'});self.assertEqual(status,201);kid=k['child']
   self.assertEqual(other.call('reset-child',{'id':kid['id'],'secret':'654321'})[0],404)

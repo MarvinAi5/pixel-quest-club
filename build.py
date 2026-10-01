@@ -23,7 +23,8 @@ def emit(name,content):
  p=Path(name);digest=hashlib.sha256(content).hexdigest()[:12]
  target=str(p.with_name(p.stem+'-'+digest+p.suffix));dest=dist/target
  dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(content);mapping[name]=target
-for p in (public/'assets').glob('*.webp'):emit('assets/'+p.name,p.read_bytes())
+for p in (public/'assets').iterdir():
+ if p.suffix in ['.webp','.jpg']:emit('assets/'+p.name,p.read_bytes())
 for name in ['starter-godot.zip','favicon.svg']+[p.name for p in public.glob('scratch-day-*.sb3')]:emit(name,(public/name).read_bytes())
 for lesson in data['lessons']:
  if lesson.get('checkpoint'):lesson['checkpoint']=mapping[lesson['checkpoint']]

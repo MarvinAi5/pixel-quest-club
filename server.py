@@ -119,7 +119,7 @@ class Handler(SimpleHTTPRequestHandler):
   path=urllib.parse.urlparse(self.path).path
   if path.startswith('/api/'):
    u=self.user()
-   if path=='/api/session':return self.reply(200,dict(user=public_user(u) if u else None,openChildSignup=SIGNUP,parentSignup=PARENT_SIGNUP,inviteRequired=bool(INVITE)))
+   if path=='/api/session':return self.reply(200,dict(user=public_user(u) if u else None,sessionState='verified' if u else 'unrecognized-session' if re.search(r'(?:^|;\s*)pqc_session=',self.headers.get('Cookie','')) else 'missing-cookie',openChildSignup=SIGNUP,parentSignup=PARENT_SIGNUP,inviteRequired=bool(INVITE)))
    if not u:return self.reply(401,dict(error='Sign in to save online.'))
    if path=='/api/save':
     with db() as c:r=c.execute('SELECT * FROM saves WHERE user_id=?',(u['id'],)).fetchone()
