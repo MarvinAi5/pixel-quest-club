@@ -2,7 +2,7 @@ name: Prelaunch website QA
 on:
   push:
     branches: [main]
-    paths: ['public/**', 'server.py', 'activity.py', 'traffic.py', 'build.py', 'tests/**', 'package.json', '.github/workflows/prelaunch-qa.yml']
+    paths: ['public/**', 'server.py', 'family_links.py', 'activity.py', 'traffic.py', 'build.py', 'tests/**', 'package.json', '.github/workflows/prelaunch-qa.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -33,6 +33,7 @@ jobs:
         run: |
           npm run qa:browser
           node tests/family_browser.cjs
+          node tests/link_browser.cjs
       - name: Local 100-user load test
         run: python3 tests/load_test.py > qa-artifacts/load-results.json
       - uses: actions/upload-artifact@v4

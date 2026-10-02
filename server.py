@@ -6,7 +6,7 @@ from pathlib import Path
 from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 from http.cookies import SimpleCookie
 from zoneinfo import ZoneInfo
-import activity, traffic
+import activity, traffic, family_links
 ROOT=Path(__file__).resolve().parent
 PUBLIC=Path(os.environ.get('PQC_PUBLIC_DIR',str(ROOT/'public')))
 DATA=Path(os.environ.get('PQC_DATA_DIR',str(ROOT/'data')))
@@ -35,6 +35,7 @@ def init():
 CREATE TABLE IF NOT EXISTS sessions(token TEXT PRIMARY KEY,user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,expires REAL NOT NULL);
 CREATE TABLE IF NOT EXISTS saves(user_id TEXT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,payload TEXT NOT NULL,revision INTEGER NOT NULL DEFAULT 0,updated REAL NOT NULL);''')
   c.executescript(activity.SCHEMA)
+  c.executescript(family_links.SCHEMA)
 def digest(secret):
  salt=secrets.token_hex(16);return salt+':'+hashlib.pbkdf2_hmac('sha256',secret.encode(),salt.encode(),200000).hex()
 def verify(secret,stored):
@@ -53,8 +54,9 @@ def public_user(u):
  result={k:u[k] for k in ['id','username','role','avatar','path','theme','parent_id']}
  result['owner']=bool(OWNER and u['role']=='parent' and u['username']==OWNER)
  return result
-def create_user(role,secret,parent=None,username=None,avatar=0,path='story',theme='royal'):
+def create_user(role,secret,parent=None,username=None,avatar=0,path='story',theme='royal',family_code=None):
  now=time.time();uid=secrets.token_hex(12);recovery=secrets.token_urlsafe(24)
+ generated_username=username is None
  if username is None:
   username='-'.join([secrets.choice(['Comet','Pixel','Sunny','Moon','Royal','Brave']),secrets.choice(['Otter','Fox','Owl','Panda','Dragon','Robot']),str(secrets.randbelow(90000)+10000)]).lower()
  if not re.fullmatch(r'[a-z0-9-]{3,40}',username):raise ValueError('Use 3–40 letters, numbers or hyphens for the username.')
@@ -65,6 +67,12 @@ def create_user(role,secret,parent=None,username=None,avatar=0,path='story',them
  with db() as c:
   c.execute('BEGIN IMMEDIATE')
   if c.execute('SELECT count(*) FROM users').fetchone()[0]>=MAX_ACCOUNTS:raise ValueError('The club is full for now. Guest lessons are still available.')
+  if generated_username:
+   while c.execute('SELECT 1 FROM users WHERE username=?',(username,)).fetchone():
+    username='-'.join([secrets.choice(['Comet','Pixel','Sunny','Moon','Royal','Brave']),secrets.choice(['Otter','Fox','Owl','Panda','Dragon','Robot']),str(secrets.randbelow(90000)+10000)]).lower()
+  if family_code:
+   if role!='child':raise ValueError('Family codes are for child accounts.')
+   parent=family_links.use_family_code(c,family_code)
   c.execute('INSERT INTO users VALUES(?,?,?,?,?,?,?,?,?,?,?)',(uid,username,role,parent,secret_hash,recovery_hash,avatar,path,theme,now,now))
   u=c.execute('SELECT * FROM users WHERE id=?',(uid,)).fetchone()
  return u,recovery
@@ -121,6 +129,9 @@ class Handler(SimpleHTTPRequestHandler):
    u=self.user()
    if path=='/api/session':return self.reply(200,dict(user=public_user(u) if u else None,sessionState='verified' if u else 'unrecognized-session' if re.search(r'(?:^|;\s*)pqc_session=',self.headers.get('Cookie','')) else 'missing-cookie',openChildSignup=SIGNUP,parentSignup=PARENT_SIGNUP,inviteRequired=bool(INVITE)))
    if not u:return self.reply(401,dict(error='Sign in to save online.'))
+   if path=='/api/family-link' and u['role']=='child':
+    with db() as c:pending=family_links.pending(c,u['id'])
+    return self.reply(200,dict(pending=pending,user=public_user(u)))
    if path=='/api/save':
     with db() as c:r=c.execute('SELECT * FROM saves WHERE user_id=?',(u['id'],)).fetchone()
     return self.reply(200,dict(payload=json.loads(r['payload']) if r else None,revision=r['revision'] if r else 0))
@@ -152,7 +163,7 @@ class Handler(SimpleHTTPRequestHandler):
    b=json.loads(self.rfile.read(size));path=urllib.parse.urlparse(self.path).path
    if not isinstance(b,dict):raise ValueError('Invalid request.')
    u=self.user()
-   if path in ['/api/login','/api/register','/api/recover']:
+   if path in ['/api/login','/api/recover']:
     key=str(b.get('username','')).lower()[:40]
     if not throttle('auth-user:'+key,10) or not throttle('auth-ip:'+self.client_address[0],100):return self.reply(429,dict(error='Too many tries. Take a break and try again later.'))
    if path=='/api/login':
@@ -161,6 +172,7 @@ class Handler(SimpleHTTPRequestHandler):
     if not r or not verify(secret,r['secret']):return self.reply(401,dict(error='That username and code/password did not match.'))
     return self.reply(200,dict(user=public_user(r)),self.login(r,b.get('remember') is True))
    if path=='/api/register':
+    if not throttle('register-ip:'+self.client_address[0],25):return self.reply(429,dict(error='Too many accounts created recently. Try again later; guest lessons remain open.'))
     role=b.get('role','parent')
     if role=='parent':
      if not PARENT_SIGNUP:return self.reply(403,dict(error='Parent registration is closed.'))
@@ -168,7 +180,7 @@ class Handler(SimpleHTTPRequestHandler):
     elif role=='child':
      if not SIGNUP:return self.reply(403,dict(error='Guest lessons are open. Ask a grown-up to create a saved account.'))
     else:raise ValueError('Choose a valid account type.')
-    r,key=create_user(role,str(b.get('secret','')),username=str(b['username']).lower() if role=='parent' else None,avatar=int(b.get('avatar',0)),path=b.get('path','story'),theme=b.get('theme','royal'))
+    r,key=create_user(role,str(b.get('secret','')),username=str(b['username']).lower() if role=='parent' else None,avatar=int(b.get('avatar',0)),path=b.get('path','story'),theme=b.get('theme','royal'),family_code=str(b.get('familyCode','')).strip() or None)
     return self.reply(201,dict(user=public_user(r),recoveryKey=key),self.login(r))
    if path=='/api/recover':
     with db() as c:r=c.execute('SELECT * FROM users WHERE username=?',(str(b.get('username','')).lower(),)).fetchone()
@@ -176,7 +188,7 @@ class Handler(SimpleHTTPRequestHandler):
     new=str(b.get('secret',''))
     if (r['role']=='child' and not re.fullmatch(r'\d{6}',new)) or (r['role']=='parent' and not 10<=len(new)<=128):raise ValueError('Choose a valid new code/password.')
     key=secrets.token_urlsafe(24)
-    with db() as c:c.execute('UPDATE users SET secret=?,recovery=? WHERE id=?',(digest(new),digest(key),r['id']));c.execute('DELETE FROM sessions WHERE user_id=?',(r['id'],))
+    with db() as c:c.execute('UPDATE users SET secret=?,recovery=? WHERE id=?',(digest(new),digest(key),r['id']));c.execute('DELETE FROM sessions WHERE user_id=?',(r['id'],));family_links.revoke(c,r['id'])
     return self.reply(200,dict(recoveryKey=key,message='Code changed. Keep the new recovery key and sign in.'))
    if not u:return self.reply(401,dict(error='Sign in first.'))
    if not throttle('writes:'+u['id'],120,60):return self.reply(429,dict(error='Saving too quickly. Try again shortly.'))
@@ -212,13 +224,23 @@ class Handler(SimpleHTTPRequestHandler):
     else:
      with db() as c:c.execute('DELETE FROM users WHERE id=?',(r['id'],))
     return self.reply(200,dict(ok=True))
-   if path=='/api/link-parent' and u['role']=='child' and not u['parent_id']:
-    name=str(b.get('username','')).lower()
-    if not throttle('link:'+name,10):return self.reply(429,dict(error='Too many tries.'))
-    with db() as c:r=c.execute("SELECT * FROM users WHERE username=? AND role='parent'",(name,)).fetchone()
-    if not r or not verify(str(b.get('secret',''))[:128],r['secret']):return self.reply(401,dict(error='Parent sign-in did not match.'))
-    with db() as c:c.execute('UPDATE users SET parent_id=? WHERE id=?',(r['id'],u['id']))
-    return self.reply(200,dict(ok=True))
+   if path in ['/api/child-link-code','/api/family-code','/api/revoke-family-code','/api/request-child-link','/api/resolve-child-link']:
+    parent_action=path in ['/api/family-code','/api/revoke-family-code','/api/request-child-link']
+    if u['role']!=('parent' if parent_action else 'child'):return self.reply(403,dict(error='Use the appropriate signed-in account for this action.'))
+    if path=='/api/request-child-link':
+     name=str(b.get('username','')).strip().lower()[:40]
+     if not throttle('link-parent:'+u['id'],10) or not throttle('link-child:'+name,20):return self.reply(429,dict(error='Too many linking attempts. Take a break and ask for a new code later.'))
+    if path in ['/api/child-link-code','/api/family-code'] and not throttle('link-issue:'+u['id'],10):return self.reply(429,dict(error='Please wait before making another code.'))
+    with db() as c:
+     c.execute('BEGIN IMMEDIATE')
+     current=c.execute('SELECT * FROM users WHERE id=?',(u['id'],)).fetchone()
+     if path in ['/api/child-link-code','/api/family-code']:
+      result=family_links.issue(c,current,'family' if parent_action else 'child')
+     elif path=='/api/revoke-family-code':
+      c.execute("DELETE FROM family_codes WHERE user_id=? AND kind='family'",(u['id'],));result=dict(ok=True)
+     elif path=='/api/request-child-link':result=family_links.claim(c,current,b.get('username',''),b.get('code',''))
+     else:result=dict(user=public_user(family_links.resolve(c,current,b.get('requestId'),b.get('accept'))))
+    return self.reply(200,result)
    return self.reply(404,dict(error='Not found.'))
   except sqlite3.IntegrityError:return self.reply(409,dict(error='That username is already in use. Choose another.'))
   except (ValueError,TypeError,KeyError,json.JSONDecodeError) as e:return self.reply(400,dict(error=str(e) or 'Check your entries.'))
