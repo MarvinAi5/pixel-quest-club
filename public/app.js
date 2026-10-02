@@ -16,7 +16,7 @@ function persist(){
  if(user&&user.role==='child'&&!savingConflict){dirty=true;keepChildDraft();clearTimeout(saveTimer);saveTimer=setTimeout(saveOnline,1000);}
 }
 function keepChildDraft(){if(user?.role==='child')storageWrite(sessionStorage,'pqc-'+user.id,{payload:state,revision,dirty});}
-async function saveOnline(){if(!user||user.role!=='child'||savingConflict)return;if(saveBusy){dirty=true;return;}saveBusy=true;dirty=false;
+async function saveOnline(){clearTimeout(saveTimer);if(!user||user.role!=='child'||savingConflict)return;if(saveBusy){dirty=true;return;}saveBusy=true;dirty=false;setSaveStatus('Saving…');
  try{const r=await api('save',{payload:state,revision});revision=r.revision;setSaveStatus('Saved online');}catch(e){dirty=true;if(e.status===409){savingConflict=true;setSaveStatus('Newer online version. Download this draft, then load online.',true);}else setSaveStatus('Not synced yet · draft kept in this browser',true);}finally{saveBusy=false;keepChildDraft();if(dirty&&!savingConflict){clearTimeout(saveTimer);saveTimer=setTimeout(saveOnline,5000);}}
 }
 function setSaveStatus(text,error=false){const el=$('#save-status');if(el){el.textContent=text;el.className='status'+(error?' error':'');}}

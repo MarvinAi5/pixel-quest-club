@@ -25,6 +25,12 @@ function setup(){
  await t.run(`handleAction('start-over')`);await t.run(`handleAction('add-block','say')`);assert(!t.run('canUndoStartOver()'));await t.run(`handleAction('undo-start-over')`);assert.equal(t.run("project().scenes[0].program[0].op"),'say');
  t.run(`project().scene=1;project().scenes[1].code='say "scene two"';`);await t.run(`handleAction('start-over')`);assert.equal(t.run("project().scenes[0].program[0].op"),'say');await t.run(`handleAction('undo-start-over')`);assert.equal(t.run('project().scenes[1].code'),'say "scene two"');
  // Successful save clears the pending draft and advances its revision.
+ // A manual save consumes the queued autosave; one edit should write once.
+ t=setup();const pendingTimers=new Map();let nextTimer=0,writes=0;
+ t.context.setTimeout=fn=>{pendingTimers.set(++nextTimer,fn);return nextTimer;};t.context.clearTimeout=id=>pendingTimers.delete(id);
+ t.context.recordWrite=()=>{writes++;return {revision:1};};
+ t.run(`user={id:'child-a',role:'child'};state.path='story';state.notes['story-1']='One edit';api=async()=>recordWrite();persist();`);
+ assert.equal(pendingTimers.size,1);await t.run('saveOnline()');for(const fn of pendingTimers.values())await fn();assert.equal(writes,1);assert.equal(pendingTimers.size,0);
  t=setup();t.run(`user={id:'child-a',role:'child'};state.path='story';dirty=true;api=async()=>({revision:1});`);await t.run('saveOnline()');draft=JSON.parse(t.storage.get('pqc-child-a'));assert.equal(draft.revision,1);assert(!draft.dirty);
  t=setup();await t.run(`handleAction('path','story')`);t.run(`project().title='My own game';project().scenes[0].code='say "My words"';`);await t.run(`handleAction('theme','space')`);assert.equal(t.run('project().title'),'My own game');assert.equal(t.run('project().scenes[0].code'),'say "My words"');
  assert.equal(t.run('project().scenes[0].program.length'),0);
